@@ -3,28 +3,37 @@ from PySide6.QtWidgets import QApplication
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import QFile
 
+from login import Login
+from autenticacion import Auth
+from maincontrol import Principal
+
 app = QApplication(sys.argv)
 
 loader = QUiLoader()
-archivo = QFile("interfaz.ui")
-archivo.open(QFile.ReadOnly)
 
-ventana = loader.load(archivo)
+# 🔹 Cargar login
+archivo = QFile("login.ui")
+archivo.open(QFile.ReadOnly)
+ventana_login = loader.load(archivo)
 archivo.close()
 
-# 🔹 Función del login
-def verificar_login():
-    usuario = ventana.input_user.text()
-    password = ventana.input_password.text()
+# 🔹 Función para abrir principal
+ventana_principal = None
 
-    # 👇 Usuario y contraseña "correctos"
-    if usuario == "admin" and password == "1234":
-        ventana.label_resultado.setText("✅ Bienvenido bro 😎")
-    else:
-        ventana.label_resultado.setText("❌ Usuario o contraseña incorrectos")
+def abrir_principal(rol):
+    global ventana_principal
 
-# 🔹 Conectar botón
-ventana.btn_login.clicked.connect(verificar_login)
+    archivo = QFile("ventana.ui")
+    archivo.open(QFile.ReadOnly)
+    ventana_principal = loader.load(archivo)
+    archivo.close()
 
-ventana.show()
+    Principal(ventana_principal, rol)
+    ventana_principal.show()
+
+# 🔹 Inyecciones (SOLID)
+auth = Auth()
+login_controller = Login(ventana_login, auth, abrir_principal)
+
+ventana_login.show()
 sys.exit(app.exec())
