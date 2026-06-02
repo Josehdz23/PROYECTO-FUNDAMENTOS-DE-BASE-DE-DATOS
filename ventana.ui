@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1469</width>
-    <height>919</height>
+    <width>930</width>
+    <height>830</height>
    </rect>
   </property>
   <property name="palette">
@@ -186,7 +186,7 @@
          <bool>false</bool>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="tab_alumno">
          <attribute name="icon">
@@ -375,6 +375,66 @@
          <attribute name="title">
           <string>VER ALUMNOS</string>
          </attribute>
+         <widget class="QTableWidget" name="tabla_alumnos">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>60</y>
+            <width>911</width>
+            <height>671</height>
+           </rect>
+          </property>
+          <property name="palette">
+           <palette>
+            <active>
+             <colorrole role="Base">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </active>
+            <inactive>
+             <colorrole role="Base">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </inactive>
+            <disabled/>
+           </palette>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="input_buscar">
+          <property name="geometry">
+           <rect>
+            <x>260</x>
+            <y>20</y>
+            <width>113</width>
+            <height>26</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_6">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>20</y>
+            <width>251</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>BUSCAR POR NOMBRE ALUMNO</string>
+          </property>
+         </widget>
         </widget>
         <widget class="QWidget" name="tab_mod_alumno">
          <attribute name="icon">
@@ -540,7 +600,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1469</width>
+     <width>930</width>
      <height>33</height>
     </rect>
    </property>

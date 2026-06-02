@@ -1,13 +1,25 @@
-from PySide6.QtWidgets import QMessageBox
+from PySide6.QtWidgets import QMessageBox, QTableWidgetItem
 from conexion_db import conectar
 
 class Principal:
     def __init__(self, ventana, rol):
         self.ventana = ventana
         self.rol = rol
-        self.ventana.showMaximized()
         self.configurar_permisos()
+        self.cargar_alumnos()
         self.ventana.btn_guardar_alumno.clicked.connect(self.agregar_alumno)
+        self.ventana.input_buscar.textChanged.connect(self.buscar_alumno)
+        self.ventana.tabla_alumnos.setStyleSheet("""
+                    QTableWidget {
+                        background-color: #FFFFFF; /* Fondo blanco */
+                        color: #000000;            /* Texto negro */
+                    }
+                    QHeaderView::section {
+                        background-color: #E0E0E0; /* Fondo gris para los títulos */
+                        color: #000000;            /* Texto negro para los títulos */
+                        font-weight: bold;         /* Títulos en negrita */
+                    }
+                """)
 
     def configurar_permisos(self):
         if self.rol != "admin":
@@ -63,6 +75,7 @@ class Principal:
             self.ventana.input_correo.clear()
             self.ventana.input_telefono.clear()
             self.ventana.input_dpi.clear()
+            self.cargar_alumnos()
 
         except Exception as e:
             QMessageBox.critical(self.ventana, "Error", f"No se pudo guardar: {e}")
@@ -72,3 +85,49 @@ class Principal:
             if conexion.is_connected():
                 cursor.close()
                 conexion.close()
+
+    def cargar_alumnos(self, busqueda=""):
+        conexion = conectar()
+        if conexion is None:
+            return
+
+        try:
+            cursor = conexion.cursor(dictionary=True)
+
+            if busqueda == "":
+                query = "SELECT * FROM alumnos"
+                cursor.execute(query)
+            else:
+                query = "SELECT * FROM alumnos WHERE nombre LIKE %s"
+                termino = f"{busqueda}%"
+                cursor.execute(query, (termino,))
+
+            alumnos = cursor.fetchall()
+
+            self.ventana.tabla_alumnos.setRowCount(0)
+
+            self.ventana.tabla_alumnos.setColumnCount(6)
+            self.ventana.tabla_alumnos.setHorizontalHeaderLabels(
+                ['ID', 'Nombre', 'Correo', 'Teléfono', 'DPI', 'Fecha Nac.'])
+
+            for fila_idx, alumno in enumerate(alumnos):
+                self.ventana.tabla_alumnos.insertRow(fila_idx)
+
+                self.ventana.tabla_alumnos.setItem(fila_idx, 0, QTableWidgetItem(str(alumno['id'])))
+                self.ventana.tabla_alumnos.setItem(fila_idx, 1, QTableWidgetItem(str(alumno['nombre'])))
+                self.ventana.tabla_alumnos.setItem(fila_idx, 2, QTableWidgetItem(str(alumno['correo'])))
+                self.ventana.tabla_alumnos.setItem(fila_idx, 3, QTableWidgetItem(str(alumno['telefono'])))
+                self.ventana.tabla_alumnos.setItem(fila_idx, 4, QTableWidgetItem(str(alumno['dpi'])))
+                self.ventana.tabla_alumnos.setItem(fila_idx, 5, QTableWidgetItem(str(alumno['fecha_nacimiento'])))
+
+        except Exception as e:
+            print(f"Error al cargar la tabla: {e}")
+
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+
+    def buscar_alumno(self):
+        texto_busqueda = self.ventana.input_buscar.text()
+        self.cargar_alumnos(texto_busqueda)

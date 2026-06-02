@@ -31,6 +31,7 @@ def abrir_principal(usuario_db):
     ventana_principal.controlador = Principal(ventana_principal, rol_usuario)
 
     ventana_principal.show()
+    print(ventana_principal.size())
 
 login_controller = Login(ventana_login, abrir_principal)
 
