@@ -1,3 +1,4 @@
+from PySide6.QtCore import QSize
 from PySide6.QtWidgets import QMessageBox
 from conexion_db import conectar
 
@@ -5,8 +6,14 @@ class Login:
     def __init__(self, ventana, abrir_principal):
         self.ventana = ventana
         self.abrir_principal = abrir_principal
+        self.ventana.setMinimumSize(QSize(399, 321))
+        self.ventana.setMaximumSize(QSize(399, 321))
 
         self.ventana.btn_login.clicked.connect(self.verificar_login)
+        self.ventana.btn_salir.clicked.connect(self.salir)
+
+    def salir(self):
+        self.ventana.close()
 
     def verificar_login(self):
         usuario_ingresado = self.ventana.input_user.text()

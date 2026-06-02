@@ -1,4 +1,5 @@
-from PySide6.QtWidgets import QMessageBox, QTableWidgetItem
+from PySide6.QtCore import QSize
+from PySide6.QtWidgets import QMessageBox, QTableWidgetItem, QHeaderView
 from conexion_db import conectar
 
 class Principal:
@@ -6,6 +7,8 @@ class Principal:
         self.ventana = ventana
         self.rol = rol
         self.configurar_permisos()
+        self.ventana.setMaximumSize(QSize(1280, 720))
+        self.ventana.setMinimumSize(QSize(1280, 720))
         self.cargar_alumnos()
         self.ventana.btn_guardar_alumno.clicked.connect(self.agregar_alumno)
         self.ventana.input_buscar.textChanged.connect(self.buscar_alumno)
@@ -109,6 +112,16 @@ class Principal:
             self.ventana.tabla_alumnos.setColumnCount(6)
             self.ventana.tabla_alumnos.setHorizontalHeaderLabels(
                 ['ID', 'Nombre', 'Correo', 'Teléfono', 'DPI', 'Fecha Nac.'])
+
+            self.ventana.tabla_alumnos.setColumnWidth(0, 50)  # ID fijo
+            self.ventana.tabla_alumnos.setColumnWidth(1, 300)  # Nombre fijo
+
+            # 🔹 Esta línea hace que el Correo (columna 2) se estire llenando el espacio vacío
+            self.ventana.tabla_alumnos.horizontalHeader().setSectionResizeMode(2, QHeaderView.Stretch)
+
+            self.ventana.tabla_alumnos.setColumnWidth(3, 100)  # Teléfono fijo
+            self.ventana.tabla_alumnos.setColumnWidth(4, 150)  # DPI fijo
+            self.ventana.tabla_alumnos.setColumnWidth(5, 100)  # Fecha fijo
 
             for fila_idx, alumno in enumerate(alumnos):
                 self.ventana.tabla_alumnos.insertRow(fila_idx)
