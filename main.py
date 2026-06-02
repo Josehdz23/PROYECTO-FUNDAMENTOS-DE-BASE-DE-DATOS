@@ -4,23 +4,22 @@ from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import QFile
 
 from login import Login
-from autenticacion import Auth
 from maincontrol import Principal
 
 app = QApplication(sys.argv)
 
 loader = QUiLoader()
 
-# 🔹 Cargar login
+# Abro el login
 archivo = QFile("login.ui")
 archivo.open(QFile.ReadOnly)
 ventana_login = loader.load(archivo)
 archivo.close()
 
-# 🔹 Función para abrir principal
+# Para abrir mi ventana
 ventana_principal = None
 
-def abrir_principal(rol):
+def abrir_principal(usuario_db):
     global ventana_principal
 
     archivo = QFile("ventana.ui")
@@ -28,12 +27,11 @@ def abrir_principal(rol):
     ventana_principal = loader.load(archivo)
     archivo.close()
 
-    Principal(ventana_principal, rol)
+    rol_usuario = usuario_db['tipo']
+    Principal(ventana_principal, rol_usuario)
     ventana_principal.show()
 
-# 🔹 Inyecciones (SOLID)
-auth = Auth()
-login_controller = Login(ventana_login, auth, abrir_principal)
+login_controller = Login(ventana_login, abrir_principal)
 
 ventana_login.show()
 sys.exit(app.exec())

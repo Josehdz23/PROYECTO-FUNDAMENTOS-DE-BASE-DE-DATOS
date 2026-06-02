@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>868</width>
-    <height>639</height>
+    <width>1469</width>
+    <height>919</height>
    </rect>
   </property>
   <property name="palette">
@@ -101,6 +101,13 @@
     </disabled>
    </palette>
   </property>
+  <property name="font">
+   <font>
+    <family>Eras Light ITC</family>
+    <pointsize>12</pointsize>
+    <bold>true</bold>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>EXTREMA BELLEZA</string>
   </property>
@@ -172,55 +179,338 @@
           </disabled>
          </palette>
         </property>
+        <property name="cursor">
+         <cursorShape>ArrowCursor</cursorShape>
+        </property>
+        <property name="mouseTracking">
+         <bool>false</bool>
+        </property>
         <property name="currentIndex">
          <number>0</number>
         </property>
-        <widget class="QWidget" name="tab">
+        <widget class="QWidget" name="tab_alumno">
+         <attribute name="icon">
+          <iconset>
+           <normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Alumno.png</normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Alumno.png</iconset>
+         </attribute>
          <attribute name="title">
           <string>NUEVO ALUMNO</string>
          </attribute>
          <widget class="QLabel" name="label">
           <property name="geometry">
            <rect>
-            <x>110</x>
-            <y>60</y>
-            <width>371</width>
-            <height>181</height>
+            <x>30</x>
+            <y>50</y>
+            <width>161</width>
+            <height>21</height>
            </rect>
           </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>12</pointsize>
+            <bold>true</bold>
+            <underline>false</underline>
+            <strikeout>false</strikeout>
+            <kerning>true</kerning>
+           </font>
+          </property>
           <property name="text">
-           <string>aoihujfauioysfityoasy8iofuyiaf</string>
+           <string>Nombre del alumno</string>
           </property>
          </widget>
          <widget class="QLineEdit" name="lineEdit">
           <property name="geometry">
            <rect>
-            <x>310</x>
-            <y>140</y>
-            <width>113</width>
-            <height>26</height>
+            <x>220</x>
+            <y>50</y>
+            <width>301</width>
+            <height>21</height>
            </rect>
+          </property>
+          <property name="placeholderText">
+           <string>Pedro Mejía</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="lineEdit_2">
+          <property name="geometry">
+           <rect>
+            <x>220</x>
+            <y>100</y>
+            <width>301</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="placeholderText">
+           <string>12345678</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="lineEdit_3">
+          <property name="geometry">
+           <rect>
+            <x>220</x>
+            <y>150</y>
+            <width>301</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="placeholderText">
+           <string>alumno@gmail.com</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="lineEdit_5">
+          <property name="geometry">
+           <rect>
+            <x>220</x>
+            <y>250</y>
+            <width>301</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="placeholderText">
+           <string>1234567890123</string>
+          </property>
+         </widget>
+         <widget class="QDateEdit" name="dateEdit">
+          <property name="geometry">
+           <rect>
+            <x>220</x>
+            <y>200</y>
+            <width>301</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="maximumDate">
+           <date>
+            <year>2008</year>
+            <month>6</month>
+            <day>1</day>
+           </date>
+          </property>
+          <property name="minimumDate">
+           <date>
+            <year>1946</year>
+            <month>1</month>
+            <day>1</day>
+           </date>
+          </property>
+          <property name="displayFormat">
+           <string>yyyy/MM/d</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_2">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>100</y>
+            <width>161</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Número de telefono</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_3">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>150</y>
+            <width>161</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Correo Electrónico</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_4">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>200</y>
+            <width>161</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Fecha Nacimiento</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_5">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>250</y>
+            <width>161</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Número de DPI</string>
           </property>
          </widget>
         </widget>
-        <widget class="QWidget" name="tab_2">
-         <attribute name="title">
-          <string>NUEVO PRODUCTO</string>
+        <widget class="QWidget" name="tab_alumnos">
+         <attribute name="icon">
+          <iconset>
+           <normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Alumno.png</normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Alumno.png</iconset>
          </attribute>
-        </widget>
-        <widget class="QWidget" name="tab_3">
          <attribute name="title">
           <string>VER ALUMNOS</string>
          </attribute>
         </widget>
-        <widget class="QWidget" name="tab_4">
+        <widget class="QWidget" name="tab_mod_alumno">
+         <attribute name="icon">
+          <iconset>
+           <normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Modificar.png</normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Modificar.png</iconset>
+         </attribute>
          <attribute name="title">
           <string>MODIFICAR ALUMNO</string>
          </attribute>
         </widget>
-        <widget class="QWidget" name="tab_5">
+        <widget class="QWidget" name="tab_inscripcion">
+         <attribute name="icon">
+          <iconset>
+           <normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Nueva carrera.png</normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Nueva carrera.png</iconset>
+         </attribute>
+         <attribute name="title">
+          <string>INSCRIPCIONES</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_empleado">
+         <attribute name="icon">
+          <iconset>
+           <normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Nuevo Usuario.png</normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Nuevo Usuario.png</iconset>
+         </attribute>
+         <attribute name="title">
+          <string>NUEVO EMPLEADO</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_empleados">
+         <attribute name="icon">
+          <iconset>
+           <normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Lista.png</normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Lista.png</iconset>
+         </attribute>
+         <attribute name="title">
+          <string>VER EMPLEADOS</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_mod_empleado">
+         <attribute name="icon">
+          <iconset>
+           <normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Modificar.png</normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Modificar.png</iconset>
+         </attribute>
+         <attribute name="title">
+          <string>MODIFICAR EMPLEADO</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_producto">
+         <attribute name="icon">
+          <iconset>
+           <normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Producto.png</normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Producto.png</iconset>
+         </attribute>
+         <attribute name="title">
+          <string>NUEVO PRODUCTO</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_productos">
+         <attribute name="icon">
+          <iconset>
+           <normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Producto.png</normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Producto.png</iconset>
+         </attribute>
+         <attribute name="title">
+          <string>VER PRODUCTOS</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_mod_producto">
+         <attribute name="icon">
+          <iconset>
+           <normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Modificar.png</normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Modificar.png</iconset>
+         </attribute>
          <attribute name="title">
           <string>MODIFICAR PRODUCTO</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_invitado">
+         <attribute name="icon">
+          <iconset>
+           <normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Nuevo Usuario.png</normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Nuevo Usuario.png</iconset>
+         </attribute>
+         <attribute name="title">
+          <string>NUEVO INVITADO</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_invitados">
+         <attribute name="icon">
+          <iconset>
+           <normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Lista.png</normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Lista.png</iconset>
+         </attribute>
+         <attribute name="title">
+          <string>VER INVITADOS</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_evento">
+         <attribute name="icon">
+          <iconset>
+           <normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Evento.png</normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Evento.png</iconset>
+         </attribute>
+         <attribute name="title">
+          <string>CREAR EVENTO</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_eventos">
+         <attribute name="icon">
+          <iconset>
+           <normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Evento.png</normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Evento.png</iconset>
+         </attribute>
+         <attribute name="title">
+          <string>EVENTOS</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_carrera">
+         <attribute name="icon">
+          <iconset>
+           <normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Nueva carrera.png</normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Nueva carrera.png</iconset>
+         </attribute>
+         <attribute name="title">
+          <string>NUEVA CARRERA</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_carreras">
+         <attribute name="icon">
+          <iconset>
+           <normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Lista.png</normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Lista.png</iconset>
+         </attribute>
+         <attribute name="title">
+          <string>CARRERAS</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_asignaciones">
+         <attribute name="icon">
+          <iconset>
+           <normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Asignar.png</normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Asignar.png</iconset>
+         </attribute>
+         <attribute name="title">
+          <string>ASIGNACIONES</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_proveedor">
+         <attribute name="icon">
+          <iconset>
+           <normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Proveedor.png</normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Proveedor.png</iconset>
+         </attribute>
+         <attribute name="title">
+          <string>NUEVO PROVEEDOR</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_proveedores">
+         <attribute name="icon">
+          <iconset>
+           <normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Proveedor.png</normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Proveedor.png</iconset>
+         </attribute>
+         <attribute name="title">
+          <string>PROVEEDORES</string>
          </attribute>
         </widget>
        </widget>
@@ -234,7 +524,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>868</width>
+     <width>1469</width>
      <height>33</height>
     </rect>
    </property>

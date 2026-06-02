@@ -1,23 +1,46 @@
+from PySide6.QtWidgets import QMessageBox
+from conexion_db import conectar
+
 class Login:
-    def __init__(self, ventana, auth, abrir_principal):
+    def __init__(self, ventana, abrir_principal):
         self.ventana = ventana
-        self.auth = auth
         self.abrir_principal = abrir_principal
 
         self.ventana.btn_login.clicked.connect(self.verificar_login)
 
     def verificar_login(self):
-        print("FUNCION EJECUTADA 🔥")
+        usuario_ingresado = self.ventana.input_user.text()
+        password_ingresada = self.ventana.input_password.text()
 
-        usuario = self.ventana.input_user.text()
-        password = self.ventana.input_password.text()
+        conexion = conectar()
+        if conexion is None:
+            QMessageBox.critical(self.ventana, "Error", "No hay conexión a la base de datos.")
+            return
 
-        rol = self.auth.login(usuario, password)
+        try:
+            cursor = conexion.cursor(dictionary=True)
 
-        print("ROL:", rol)
+            query = "SELECT * FROM empleados WHERE nombre = %s AND contraseña = %s"
+            valores = (usuario_ingresado, password_ingresada)
 
-        if rol:
-            self.ventana.close()
-            self.abrir_principal(rol)
-        else:
-            self.ventana.label_resultado.setText("❌ Incorrecto")
+            cursor.execute(query, valores)
+            usuario_db = cursor.fetchone()
+
+            if usuario_db:
+                QMessageBox.information(self.ventana, "Éxito", f"¡Bienvenido {usuario_db['nombre']}!")
+
+                self.ventana.close()
+                self.abrir_principal(usuario_db)
+
+            else:
+                QMessageBox.warning(self.ventana, "Error", "Usuario o contraseña incorrectos.")
+
+        except Exception as e:
+            QMessageBox.critical(self.ventana, "Error", f"Error en la consulta: {e}")
+
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+
+
