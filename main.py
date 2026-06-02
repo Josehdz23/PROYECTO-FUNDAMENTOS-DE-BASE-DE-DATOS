@@ -28,7 +28,8 @@ def abrir_principal(usuario_db):
     archivo.close()
 
     rol_usuario = usuario_db['tipo']
-    Principal(ventana_principal, rol_usuario)
+    ventana_principal.controlador = Principal(ventana_principal, rol_usuario)
+
     ventana_principal.show()
 
 login_controller = Login(ventana_login, abrir_principal)

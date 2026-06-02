@@ -219,7 +219,7 @@
            <string>Nombre del alumno</string>
           </property>
          </widget>
-         <widget class="QLineEdit" name="lineEdit">
+         <widget class="QLineEdit" name="input_nombre">
           <property name="geometry">
            <rect>
             <x>220</x>
@@ -232,7 +232,7 @@
            <string>Pedro Mejía</string>
           </property>
          </widget>
-         <widget class="QLineEdit" name="lineEdit_2">
+         <widget class="QLineEdit" name="input_telefono">
           <property name="geometry">
            <rect>
             <x>220</x>
@@ -245,7 +245,7 @@
            <string>12345678</string>
           </property>
          </widget>
-         <widget class="QLineEdit" name="lineEdit_3">
+         <widget class="QLineEdit" name="input_correo">
           <property name="geometry">
            <rect>
             <x>220</x>
@@ -258,7 +258,7 @@
            <string>alumno@gmail.com</string>
           </property>
          </widget>
-         <widget class="QLineEdit" name="lineEdit_5">
+         <widget class="QLineEdit" name="input_dpi">
           <property name="geometry">
            <rect>
             <x>220</x>
@@ -271,7 +271,7 @@
            <string>1234567890123</string>
           </property>
          </widget>
-         <widget class="QDateEdit" name="dateEdit">
+         <widget class="QDateEdit" name="input_fecha">
           <property name="geometry">
            <rect>
             <x>220</x>
@@ -296,6 +296,9 @@
           </property>
           <property name="displayFormat">
            <string>yyyy/MM/d</string>
+          </property>
+          <property name="calendarPopup">
+           <bool>true</bool>
           </property>
          </widget>
          <widget class="QLabel" name="label_2">
@@ -348,6 +351,19 @@
           </property>
           <property name="text">
            <string>Número de DPI</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="btn_guardar_alumno">
+          <property name="geometry">
+           <rect>
+            <x>330</x>
+            <y>320</y>
+            <width>131</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Guardar</string>
           </property>
          </widget>
         </widget>
