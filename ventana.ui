@@ -16,27 +16,27 @@
      <colorrole role="Button">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>0</red>
-        <green>85</green>
-        <blue>0</blue>
+        <red>27</red>
+        <green>45</green>
+        <blue>48</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>170</red>
-        <green>0</green>
-        <blue>0</blue>
+        <red>27</red>
+        <green>45</green>
+        <blue>48</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="Window">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>0</red>
-        <green>0</green>
-        <blue>0</blue>
+        <red>27</red>
+        <green>45</green>
+        <blue>48</blue>
        </color>
       </brush>
      </colorrole>
@@ -45,27 +45,27 @@
      <colorrole role="Button">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>0</red>
-        <green>85</green>
-        <blue>0</blue>
+        <red>27</red>
+        <green>45</green>
+        <blue>48</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>170</red>
-        <green>0</green>
-        <blue>0</blue>
+        <red>27</red>
+        <green>45</green>
+        <blue>48</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="Window">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>0</red>
-        <green>0</green>
-        <blue>0</blue>
+        <red>27</red>
+        <green>45</green>
+        <blue>48</blue>
        </color>
       </brush>
      </colorrole>
@@ -74,27 +74,27 @@
      <colorrole role="Button">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>0</red>
-        <green>85</green>
-        <blue>0</blue>
+        <red>27</red>
+        <green>45</green>
+        <blue>48</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>0</red>
-        <green>0</green>
-        <blue>0</blue>
+        <red>27</red>
+        <green>45</green>
+        <blue>48</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="Window">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>0</red>
-        <green>0</green>
-        <blue>0</blue>
+        <red>27</red>
+        <green>45</green>
+        <blue>48</blue>
        </color>
       </brush>
      </colorrole>
@@ -116,7 +116,7 @@
     <normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Extrema.jpg</normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Extrema.jpg</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">background-color: rgb(27, 45, 48);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
@@ -133,27 +133,27 @@
            <colorrole role="Button">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>47</red>
-              <green>36</green>
-              <blue>48</blue>
+              <red>39</red>
+              <green>63</green>
+              <blue>67</blue>
              </color>
             </brush>
            </colorrole>
            <colorrole role="Base">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>47</red>
-              <green>36</green>
-              <blue>48</blue>
+              <red>39</red>
+              <green>63</green>
+              <blue>67</blue>
              </color>
             </brush>
            </colorrole>
            <colorrole role="Window">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>47</red>
-              <green>36</green>
-              <blue>48</blue>
+              <red>39</red>
+              <green>63</green>
+              <blue>67</blue>
              </color>
             </brush>
            </colorrole>
@@ -162,27 +162,27 @@
            <colorrole role="Button">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>47</red>
-              <green>36</green>
-              <blue>48</blue>
+              <red>39</red>
+              <green>63</green>
+              <blue>67</blue>
              </color>
             </brush>
            </colorrole>
            <colorrole role="Base">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>47</red>
-              <green>36</green>
-              <blue>48</blue>
+              <red>39</red>
+              <green>63</green>
+              <blue>67</blue>
              </color>
             </brush>
            </colorrole>
            <colorrole role="Window">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>47</red>
-              <green>36</green>
-              <blue>48</blue>
+              <red>39</red>
+              <green>63</green>
+              <blue>67</blue>
              </color>
             </brush>
            </colorrole>
@@ -191,27 +191,27 @@
            <colorrole role="Button">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>47</red>
-              <green>36</green>
-              <blue>48</blue>
+              <red>39</red>
+              <green>63</green>
+              <blue>67</blue>
              </color>
             </brush>
            </colorrole>
            <colorrole role="Base">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>47</red>
-              <green>36</green>
-              <blue>48</blue>
+              <red>39</red>
+              <green>63</green>
+              <blue>67</blue>
              </color>
             </brush>
            </colorrole>
            <colorrole role="Window">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>47</red>
-              <green>36</green>
-              <blue>48</blue>
+              <red>39</red>
+              <green>63</green>
+              <blue>67</blue>
              </color>
             </brush>
            </colorrole>
@@ -232,11 +232,20 @@
          <bool>false</bool>
         </property>
         <property name="styleSheet">
-         <string notr="true">
-background-color: rgb(47, 36, 48);</string>
+         <string notr="true">background-color: rgb(39, 63, 67);
+</string>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>2</number>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="tabBarAutoHide">
+         <bool>false</bool>
         </property>
         <widget class="QWidget" name="tab_alumno">
          <attribute name="icon">
@@ -249,17 +258,17 @@ background-color: rgb(47, 36, 48);</string>
          <widget class="QLabel" name="label">
           <property name="geometry">
            <rect>
-            <x>400</x>
-            <y>190</y>
-            <width>161</width>
-            <height>21</height>
+            <x>320</x>
+            <y>50</y>
+            <width>231</width>
+            <height>41</height>
            </rect>
           </property>
           <property name="font">
            <font>
             <family>Eras Light ITC</family>
-            <pointsize>12</pointsize>
-            <bold>true</bold>
+            <pointsize>20</pointsize>
+            <bold>false</bold>
             <underline>false</underline>
             <strikeout>false</strikeout>
             <kerning>true</kerning>
@@ -271,14 +280,17 @@ background-color: rgb(47, 36, 48);</string>
           <property name="text">
            <string>Nombre del alumno</string>
           </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
          </widget>
          <widget class="QLineEdit" name="input_nombre">
           <property name="geometry">
            <rect>
-            <x>590</x>
-            <y>190</y>
+            <x>580</x>
+            <y>50</y>
             <width>301</width>
-            <height>21</height>
+            <height>41</height>
            </rect>
           </property>
           <property name="font">
@@ -289,7 +301,7 @@ background-color: rgb(47, 36, 48);</string>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">hover:rgb(222,222,222);</string>
+           <string notr="true">background-color: rgb(27, 45, 48);</string>
           </property>
           <property name="placeholderText">
            <string>Pedro Mejía</string>
@@ -298,10 +310,10 @@ background-color: rgb(47, 36, 48);</string>
          <widget class="QLineEdit" name="input_telefono">
           <property name="geometry">
            <rect>
-            <x>590</x>
-            <y>240</y>
+            <x>580</x>
+            <y>120</y>
             <width>301</width>
-            <height>21</height>
+            <height>41</height>
            </rect>
           </property>
           <property name="font">
@@ -310,6 +322,9 @@ background-color: rgb(47, 36, 48);</string>
             <pointsize>12</pointsize>
             <bold>true</bold>
            </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(27, 45, 48);</string>
           </property>
           <property name="placeholderText">
            <string>12345678</string>
@@ -318,10 +333,10 @@ background-color: rgb(47, 36, 48);</string>
          <widget class="QLineEdit" name="input_correo">
           <property name="geometry">
            <rect>
-            <x>590</x>
-            <y>290</y>
+            <x>580</x>
+            <y>180</y>
             <width>301</width>
-            <height>21</height>
+            <height>41</height>
            </rect>
           </property>
           <property name="font">
@@ -330,6 +345,9 @@ background-color: rgb(47, 36, 48);</string>
             <pointsize>12</pointsize>
             <bold>true</bold>
            </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(27, 45, 48);</string>
           </property>
           <property name="placeholderText">
            <string>alumno@gmail.com</string>
@@ -338,10 +356,10 @@ background-color: rgb(47, 36, 48);</string>
          <widget class="QLineEdit" name="input_dpi">
           <property name="geometry">
            <rect>
-            <x>590</x>
-            <y>390</y>
+            <x>580</x>
+            <y>300</y>
             <width>301</width>
-            <height>21</height>
+            <height>41</height>
            </rect>
           </property>
           <property name="font">
@@ -351,6 +369,9 @@ background-color: rgb(47, 36, 48);</string>
             <bold>true</bold>
            </font>
           </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(27, 45, 48);</string>
+          </property>
           <property name="placeholderText">
            <string>1234567890123</string>
           </property>
@@ -358,10 +379,10 @@ background-color: rgb(47, 36, 48);</string>
          <widget class="QDateEdit" name="input_fecha">
           <property name="geometry">
            <rect>
-            <x>590</x>
-            <y>340</y>
+            <x>580</x>
+            <y>240</y>
             <width>301</width>
-            <height>21</height>
+            <height>41</height>
            </rect>
           </property>
           <property name="font">
@@ -370,6 +391,9 @@ background-color: rgb(47, 36, 48);</string>
             <pointsize>12</pointsize>
             <bold>false</bold>
            </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(27, 45, 48);</string>
           </property>
           <property name="maximumDate">
            <date>
@@ -395,17 +419,17 @@ background-color: rgb(47, 36, 48);</string>
          <widget class="QLabel" name="label_2">
           <property name="geometry">
            <rect>
-            <x>400</x>
-            <y>240</y>
-            <width>161</width>
-            <height>16</height>
+            <x>320</x>
+            <y>120</y>
+            <width>231</width>
+            <height>41</height>
            </rect>
           </property>
           <property name="font">
            <font>
             <family>Eras Light ITC</family>
-            <pointsize>12</pointsize>
-            <bold>true</bold>
+            <pointsize>20</pointsize>
+            <bold>false</bold>
            </font>
           </property>
           <property name="styleSheet">
@@ -414,21 +438,24 @@ background-color: rgb(47, 36, 48);</string>
           <property name="text">
            <string>Número de telefono</string>
           </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
          </widget>
          <widget class="QLabel" name="label_3">
           <property name="geometry">
            <rect>
-            <x>400</x>
-            <y>290</y>
-            <width>161</width>
-            <height>16</height>
+            <x>320</x>
+            <y>180</y>
+            <width>231</width>
+            <height>41</height>
            </rect>
           </property>
           <property name="font">
            <font>
             <family>Eras Light ITC</family>
-            <pointsize>12</pointsize>
-            <bold>true</bold>
+            <pointsize>20</pointsize>
+            <bold>false</bold>
            </font>
           </property>
           <property name="styleSheet">
@@ -437,21 +464,24 @@ background-color: rgb(47, 36, 48);</string>
           <property name="text">
            <string>Correo Electrónico</string>
           </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
          </widget>
          <widget class="QLabel" name="label_4">
           <property name="geometry">
            <rect>
-            <x>400</x>
-            <y>340</y>
-            <width>161</width>
-            <height>16</height>
+            <x>320</x>
+            <y>240</y>
+            <width>231</width>
+            <height>41</height>
            </rect>
           </property>
           <property name="font">
            <font>
             <family>Eras Light ITC</family>
-            <pointsize>12</pointsize>
-            <bold>true</bold>
+            <pointsize>20</pointsize>
+            <bold>false</bold>
            </font>
           </property>
           <property name="styleSheet">
@@ -460,21 +490,24 @@ background-color: rgb(47, 36, 48);</string>
           <property name="text">
            <string>Fecha Nacimiento</string>
           </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
          </widget>
          <widget class="QLabel" name="label_5">
           <property name="geometry">
            <rect>
-            <x>400</x>
-            <y>390</y>
-            <width>161</width>
-            <height>16</height>
+            <x>320</x>
+            <y>300</y>
+            <width>231</width>
+            <height>41</height>
            </rect>
           </property>
           <property name="font">
            <font>
             <family>Eras Light ITC</family>
-            <pointsize>12</pointsize>
-            <bold>true</bold>
+            <pointsize>20</pointsize>
+            <bold>false</bold>
            </font>
           </property>
           <property name="styleSheet">
@@ -483,12 +516,15 @@ background-color: rgb(47, 36, 48);</string>
           <property name="text">
            <string>Número de DPI</string>
           </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
          </widget>
          <widget class="QPushButton" name="btn_guardar_alumno">
           <property name="geometry">
            <rect>
-            <x>590</x>
-            <y>440</y>
+            <x>580</x>
+            <y>370</y>
             <width>131</width>
             <height>51</height>
            </rect>
@@ -513,8 +549,8 @@ background-color: rgb(47, 36, 48);</string>
          <widget class="QPushButton" name="btn_limpiar">
           <property name="geometry">
            <rect>
-            <x>750</x>
-            <y>440</y>
+            <x>740</x>
+            <y>370</y>
             <width>131</width>
             <height>51</height>
            </rect>
@@ -534,6 +570,64 @@ color: rgb(0, 0, 0);</string>
            <string>Limpiar</string>
           </property>
          </widget>
+         <widget class="QLabel" name="label_11">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>-40</y>
+            <width>1261</width>
+            <height>651</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap>../../Pictures/Otradeco.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_8">
+          <property name="geometry">
+           <rect>
+            <x>40</x>
+            <y>50</y>
+            <width>251</width>
+            <height>241</height>
+           </rect>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(27, 45, 48);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Alumno.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <zorder>label_11</zorder>
+         <zorder>label</zorder>
+         <zorder>input_nombre</zorder>
+         <zorder>input_telefono</zorder>
+         <zorder>input_correo</zorder>
+         <zorder>input_dpi</zorder>
+         <zorder>input_fecha</zorder>
+         <zorder>label_2</zorder>
+         <zorder>label_3</zorder>
+         <zorder>label_4</zorder>
+         <zorder>label_5</zorder>
+         <zorder>btn_guardar_alumno</zorder>
+         <zorder>btn_limpiar</zorder>
+         <zorder>label_8</zorder>
         </widget>
         <widget class="QWidget" name="tab_alumnos">
          <attribute name="icon">
@@ -547,96 +641,204 @@ color: rgb(0, 0, 0);</string>
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>60</y>
+            <y>40</y>
             <width>1261</width>
-            <height>671</height>
+            <height>561</height>
            </rect>
           </property>
           <property name="palette">
            <palette>
             <active>
+             <colorrole role="WindowText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+              </brush>
+             </colorrole>
              <colorrole role="Button">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>47</red>
-                <green>36</green>
-                <blue>48</blue>
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="Text">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="ButtonText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
                </color>
               </brush>
              </colorrole>
              <colorrole role="Base">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>47</red>
-                <green>36</green>
-                <blue>48</blue>
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
                </color>
               </brush>
              </colorrole>
              <colorrole role="Window">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>47</red>
-                <green>36</green>
-                <blue>48</blue>
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="PlaceholderText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="128">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
                </color>
               </brush>
              </colorrole>
             </active>
             <inactive>
+             <colorrole role="WindowText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+              </brush>
+             </colorrole>
              <colorrole role="Button">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>47</red>
-                <green>36</green>
-                <blue>48</blue>
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="Text">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="ButtonText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
                </color>
               </brush>
              </colorrole>
              <colorrole role="Base">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>47</red>
-                <green>36</green>
-                <blue>48</blue>
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
                </color>
               </brush>
              </colorrole>
              <colorrole role="Window">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>47</red>
-                <green>36</green>
-                <blue>48</blue>
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="PlaceholderText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="128">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
                </color>
               </brush>
              </colorrole>
             </inactive>
             <disabled>
+             <colorrole role="WindowText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+              </brush>
+             </colorrole>
              <colorrole role="Button">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>47</red>
-                <green>36</green>
-                <blue>48</blue>
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="Text">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="ButtonText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
                </color>
               </brush>
              </colorrole>
              <colorrole role="Base">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>47</red>
-                <green>36</green>
-                <blue>48</blue>
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
                </color>
               </brush>
              </colorrole>
              <colorrole role="Window">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>47</red>
-                <green>36</green>
-                <blue>48</blue>
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="PlaceholderText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="128">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
                </color>
               </brush>
              </colorrole>
@@ -651,6 +853,23 @@ color: rgb(0, 0, 0);</string>
           <property name="autoFillBackground">
            <bool>false</bool>
           </property>
+          <property name="styleSheet">
+           <string notr="true">QTableWidget {
+                        background-color: #FFFFFF; /* Fondo blanco */
+                        color: #000000;            /* Texto negro */
+                    }
+                    QHeaderView::section {
+                        background-color: #E0E0E0; /* Fondo gris para los títulos */
+                        color: #000000;            /* Texto negro para los títulos */
+                        font-weight: bold;         /* Títulos en negrita */
+                    }</string>
+          </property>
+          <property name="verticalScrollBarPolicy">
+           <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+          </property>
+          <property name="horizontalScrollBarPolicy">
+           <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+          </property>
           <property name="dragEnabled">
            <bool>false</bool>
           </property>
@@ -661,11 +880,17 @@ color: rgb(0, 0, 0);</string>
          <widget class="QLineEdit" name="input_buscar">
           <property name="geometry">
            <rect>
-            <x>330</x>
-            <y>10</y>
+            <x>340</x>
+            <y>4</y>
             <width>241</width>
             <height>31</height>
            </rect>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
           <property name="font">
            <font>
@@ -678,7 +903,7 @@ color: rgb(0, 0, 0);</string>
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>20</y>
+            <y>10</y>
             <width>321</width>
             <height>21</height>
            </rect>
@@ -694,6 +919,29 @@ color: rgb(0, 0, 0);</string>
            <string>BUSCAR POR NOMBRE ALUMNO</string>
           </property>
          </widget>
+         <widget class="QLabel" name="label_12">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>-40</y>
+            <width>1261</width>
+            <height>651</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap>../../Pictures/Otradeco.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <zorder>label_12</zorder>
+         <zorder>tabla_alumnos</zorder>
+         <zorder>input_buscar</zorder>
+         <zorder>label_6</zorder>
         </widget>
         <widget class="QWidget" name="tab_mod_alumno">
          <attribute name="icon">
@@ -703,6 +951,348 @@ color: rgb(0, 0, 0);</string>
          <attribute name="title">
           <string>MODIFICAR ALUMNO</string>
          </attribute>
+         <widget class="QLabel" name="label_7">
+          <property name="geometry">
+           <rect>
+            <x>70</x>
+            <y>30</y>
+            <width>231</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>20</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(0, 0, 0);</string>
+          </property>
+          <property name="text">
+           <string>DPI ALUMNO</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="btn_buscar_mod">
+          <property name="geometry">
+           <rect>
+            <x>640</x>
+            <y>30</y>
+            <width>111</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>12</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Buscar</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="input_buscar_dpi_mod">
+          <property name="geometry">
+           <rect>
+            <x>320</x>
+            <y>35</y>
+            <width>301</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(27, 45, 48);</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_15">
+          <property name="geometry">
+           <rect>
+            <x>70</x>
+            <y>240</y>
+            <width>231</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>20</pointsize>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(0, 0, 0);</string>
+          </property>
+          <property name="text">
+           <string>Correo Electrónico</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_16">
+          <property name="geometry">
+           <rect>
+            <x>70</x>
+            <y>180</y>
+            <width>231</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>20</pointsize>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(0, 0, 0);</string>
+          </property>
+          <property name="text">
+           <string>Número de telefono</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="input_mod_correo">
+          <property name="geometry">
+           <rect>
+            <x>320</x>
+            <y>240</y>
+            <width>301</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>12</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(27, 45, 48);</string>
+          </property>
+          <property name="placeholderText">
+           <string>alumno@gmail.com</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="input_mod_dpi">
+          <property name="geometry">
+           <rect>
+            <x>320</x>
+            <y>300</y>
+            <width>301</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>12</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(27, 45, 48);</string>
+          </property>
+          <property name="placeholderText">
+           <string>1234567890123</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="input_mod_nombre">
+          <property name="geometry">
+           <rect>
+            <x>320</x>
+            <y>120</y>
+            <width>301</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>12</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(27, 45, 48);</string>
+          </property>
+          <property name="placeholderText">
+           <string>Pedro Mejía</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_17">
+          <property name="geometry">
+           <rect>
+            <x>70</x>
+            <y>300</y>
+            <width>231</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>20</pointsize>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(0, 0, 0);</string>
+          </property>
+          <property name="text">
+           <string>Número de DPI</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="input_mod_telefono">
+          <property name="geometry">
+           <rect>
+            <x>320</x>
+            <y>180</y>
+            <width>301</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>12</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(27, 45, 48);</string>
+          </property>
+          <property name="placeholderText">
+           <string>12345678</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_18">
+          <property name="geometry">
+           <rect>
+            <x>70</x>
+            <y>120</y>
+            <width>231</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>20</pointsize>
+            <bold>false</bold>
+            <underline>false</underline>
+            <strikeout>false</strikeout>
+            <kerning>true</kerning>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(0, 0, 0);</string>
+          </property>
+          <property name="text">
+           <string>Nombre del alumno</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="btn_guardar_mod">
+          <property name="geometry">
+           <rect>
+            <x>320</x>
+            <y>390</y>
+            <width>131</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>12</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(147, 197, 125);</string>
+          </property>
+          <property name="text">
+           <string>Guardar</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="btn_limpiar_mod">
+          <property name="geometry">
+           <rect>
+            <x>470</x>
+            <y>390</y>
+            <width>131</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>12</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(207, 226, 255);
+color: rgb(0, 0, 0);</string>
+          </property>
+          <property name="text">
+           <string>Limpiar</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_10">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>1261</width>
+            <height>651</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap>../../Pictures/Otradeco.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_9">
+          <property name="geometry">
+           <rect>
+            <x>640</x>
+            <y>90</y>
+            <width>281</width>
+            <height>271</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Modificar.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <zorder>label_10</zorder>
+         <zorder>label_7</zorder>
+         <zorder>btn_buscar_mod</zorder>
+         <zorder>input_buscar_dpi_mod</zorder>
+         <zorder>label_15</zorder>
+         <zorder>label_16</zorder>
+         <zorder>input_mod_correo</zorder>
+         <zorder>input_mod_dpi</zorder>
+         <zorder>input_mod_nombre</zorder>
+         <zorder>label_17</zorder>
+         <zorder>input_mod_telefono</zorder>
+         <zorder>label_18</zorder>
+         <zorder>btn_guardar_mod</zorder>
+         <zorder>btn_limpiar_mod</zorder>
+         <zorder>label_9</zorder>
         </widget>
         <widget class="QWidget" name="tab_inscripcion">
          <attribute name="icon">
@@ -712,6 +1302,25 @@ color: rgb(0, 0, 0);</string>
          <attribute name="title">
           <string>INSCRIPCIONES</string>
          </attribute>
+         <widget class="QLabel" name="label_13">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>-40</y>
+            <width>1261</width>
+            <height>651</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap>../../Pictures/Otradeco.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+         </widget>
         </widget>
         <widget class="QWidget" name="tab_empleado">
          <attribute name="icon">
@@ -721,6 +1330,25 @@ color: rgb(0, 0, 0);</string>
          <attribute name="title">
           <string>NUEVO EMPLEADO</string>
          </attribute>
+         <widget class="QLabel" name="label_14">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>-40</y>
+            <width>1261</width>
+            <height>651</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap>../../Pictures/Otradeco.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+         </widget>
         </widget>
         <widget class="QWidget" name="tab_empleados">
          <attribute name="icon">
@@ -730,6 +1358,299 @@ color: rgb(0, 0, 0);</string>
          <attribute name="title">
           <string>VER EMPLEADOS</string>
          </attribute>
+         <widget class="QTableWidget" name="tabla_empleados">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>40</y>
+            <width>1261</width>
+            <height>671</height>
+           </rect>
+          </property>
+          <property name="palette">
+           <palette>
+            <active>
+             <colorrole role="WindowText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="Button">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="Text">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="ButtonText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="Base">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="Window">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="PlaceholderText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="128">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </active>
+            <inactive>
+             <colorrole role="WindowText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="Button">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="Text">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="ButtonText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="Base">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="Window">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="PlaceholderText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="128">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </inactive>
+            <disabled>
+             <colorrole role="WindowText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="Button">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="Text">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="ButtonText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="Base">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="Window">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="PlaceholderText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="128">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </disabled>
+           </palette>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QTableWidget {
+                        background-color: #FFFFFF; /* Fondo blanco */
+                        color: #000000;            /* Texto negro */
+                    }
+                    QHeaderView::section {
+                        background-color: #E0E0E0; /* Fondo gris para los títulos */
+                        color: #000000;            /* Texto negro para los títulos */
+                        font-weight: bold;         /* Títulos en negrita */
+                    }</string>
+          </property>
+          <property name="dragEnabled">
+           <bool>false</bool>
+          </property>
+          <property name="alternatingRowColors">
+           <bool>false</bool>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="input_buscarempleado">
+          <property name="geometry">
+           <rect>
+            <x>370</x>
+            <y>0</y>
+            <width>241</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_19">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>10</y>
+            <width>351</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>16</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>BUSCAR POR NOMBRE EMPLEADO</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_20">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>-40</y>
+            <width>1261</width>
+            <height>651</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap>../../Pictures/Otradeco.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <zorder>label_20</zorder>
+         <zorder>tabla_empleados</zorder>
+         <zorder>input_buscarempleado</zorder>
+         <zorder>label_19</zorder>
         </widget>
         <widget class="QWidget" name="tab_mod_empleado">
          <attribute name="icon">
@@ -739,6 +1660,25 @@ color: rgb(0, 0, 0);</string>
          <attribute name="title">
           <string>MODIFICAR EMPLEADO</string>
          </attribute>
+         <widget class="QLabel" name="label_21">
+          <property name="geometry">
+           <rect>
+            <x>-10</x>
+            <y>-40</y>
+            <width>1261</width>
+            <height>651</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap>../../Pictures/Otradeco.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+         </widget>
         </widget>
         <widget class="QWidget" name="tab_producto">
          <attribute name="icon">
@@ -748,6 +1688,25 @@ color: rgb(0, 0, 0);</string>
          <attribute name="title">
           <string>NUEVO PRODUCTO</string>
          </attribute>
+         <widget class="QLabel" name="label_22">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>-40</y>
+            <width>1261</width>
+            <height>651</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap>../../Pictures/Otradeco.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+         </widget>
         </widget>
         <widget class="QWidget" name="tab_productos">
          <attribute name="icon">
@@ -757,6 +1716,25 @@ color: rgb(0, 0, 0);</string>
          <attribute name="title">
           <string>VER PRODUCTOS</string>
          </attribute>
+         <widget class="QLabel" name="label_23">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>-40</y>
+            <width>1261</width>
+            <height>651</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap>../../Pictures/Otradeco.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+         </widget>
         </widget>
         <widget class="QWidget" name="tab_mod_producto">
          <attribute name="icon">
@@ -766,6 +1744,25 @@ color: rgb(0, 0, 0);</string>
          <attribute name="title">
           <string>MODIFICAR PRODUCTO</string>
          </attribute>
+         <widget class="QLabel" name="label_24">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>-40</y>
+            <width>1261</width>
+            <height>651</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap>../../Pictures/Otradeco.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+         </widget>
         </widget>
         <widget class="QWidget" name="tab_invitado">
          <attribute name="icon">
@@ -775,6 +1772,25 @@ color: rgb(0, 0, 0);</string>
          <attribute name="title">
           <string>NUEVO INVITADO</string>
          </attribute>
+         <widget class="QLabel" name="label_25">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>-40</y>
+            <width>1261</width>
+            <height>651</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap>../../Pictures/Otradeco.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+         </widget>
         </widget>
         <widget class="QWidget" name="tab_invitados">
          <attribute name="icon">
@@ -784,6 +1800,25 @@ color: rgb(0, 0, 0);</string>
          <attribute name="title">
           <string>VER INVITADOS</string>
          </attribute>
+         <widget class="QLabel" name="label_26">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>-40</y>
+            <width>1261</width>
+            <height>651</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap>../../Pictures/Otradeco.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+         </widget>
         </widget>
         <widget class="QWidget" name="tab_evento">
          <attribute name="icon">
@@ -793,6 +1828,25 @@ color: rgb(0, 0, 0);</string>
          <attribute name="title">
           <string>CREAR EVENTO</string>
          </attribute>
+         <widget class="QLabel" name="label_27">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>-40</y>
+            <width>1261</width>
+            <height>651</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap>../../Pictures/Otradeco.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+         </widget>
         </widget>
         <widget class="QWidget" name="tab_eventos">
          <attribute name="icon">
@@ -802,6 +1856,25 @@ color: rgb(0, 0, 0);</string>
          <attribute name="title">
           <string>EVENTOS</string>
          </attribute>
+         <widget class="QLabel" name="label_28">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>-40</y>
+            <width>1261</width>
+            <height>651</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap>../../Pictures/Otradeco.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+         </widget>
         </widget>
         <widget class="QWidget" name="tab_carrera">
          <attribute name="icon">
@@ -811,6 +1884,25 @@ color: rgb(0, 0, 0);</string>
          <attribute name="title">
           <string>NUEVA CARRERA</string>
          </attribute>
+         <widget class="QLabel" name="label_29">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>-40</y>
+            <width>1261</width>
+            <height>651</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap>../../Pictures/Otradeco.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+         </widget>
         </widget>
         <widget class="QWidget" name="tab_carreras">
          <attribute name="icon">
@@ -820,6 +1912,25 @@ color: rgb(0, 0, 0);</string>
          <attribute name="title">
           <string>CARRERAS</string>
          </attribute>
+         <widget class="QLabel" name="label_30">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>-40</y>
+            <width>1261</width>
+            <height>651</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap>../../Pictures/Otradeco.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+         </widget>
         </widget>
         <widget class="QWidget" name="tab_asignaciones">
          <attribute name="icon">
@@ -829,6 +1940,25 @@ color: rgb(0, 0, 0);</string>
          <attribute name="title">
           <string>ASIGNACIONES</string>
          </attribute>
+         <widget class="QLabel" name="label_31">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>-40</y>
+            <width>1261</width>
+            <height>651</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap>../../Pictures/Otradeco.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+         </widget>
         </widget>
         <widget class="QWidget" name="tab_proveedor">
          <attribute name="icon">
@@ -838,6 +1968,25 @@ color: rgb(0, 0, 0);</string>
          <attribute name="title">
           <string>NUEVO PROVEEDOR</string>
          </attribute>
+         <widget class="QLabel" name="label_32">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>-40</y>
+            <width>1261</width>
+            <height>651</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap>../../Pictures/Otradeco.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+         </widget>
         </widget>
         <widget class="QWidget" name="tab_proveedores">
          <attribute name="icon">
@@ -847,6 +1996,25 @@ color: rgb(0, 0, 0);</string>
          <attribute name="title">
           <string>PROVEEDORES</string>
          </attribute>
+         <widget class="QLabel" name="label_33">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>-40</y>
+            <width>1261</width>
+            <height>651</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap>../../Pictures/Otradeco.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+         </widget>
         </widget>
        </widget>
       </item>

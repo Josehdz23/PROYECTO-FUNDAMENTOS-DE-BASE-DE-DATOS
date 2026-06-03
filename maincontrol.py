@@ -4,32 +4,131 @@ from conexion_db import conectar
 
 class Principal:
     def __init__(self, ventana, rol):
+        #Estos me inician el programa
         self.ventana = ventana
         self.rol = rol
-        self.configurar_permisos()
         self.ventana.setMaximumSize(QSize(1280, 720))
         self.ventana.setMinimumSize(QSize(1280, 720))
+        self.configurar_permisos()
         self.cargar_alumnos()
+        self.cargar_empleados()
+
+        # Estos me sirven para mis tabs
+        self.id_alumno_modificar = None
+        self.ventana.btn_buscar_mod.clicked.connect(self.buscar_para_modificar)
+        self.ventana.btn_guardar_mod.clicked.connect(self.actualizar_alumno)
         self.ventana.btn_limpiar.clicked.connect(self.limpiar)
+        self.ventana.btn_limpiar_mod.clicked.connect(self.limpiar)
         self.ventana.btn_guardar_alumno.clicked.connect(self.agregar_alumno)
         self.ventana.input_buscar.textChanged.connect(self.buscar_alumno)
-        self.ventana.tabla_alumnos.setStyleSheet("""
-                    QTableWidget {
-                        background-color: #FFFFFF; /* Fondo blanco */
-                        color: #000000;            /* Texto negro */
-                    }
-                    QHeaderView::section {
-                        background-color: #E0E0E0; /* Fondo gris para los títulos */
-                        color: #000000;            /* Texto negro para los títulos */
-                        font-weight: bold;         /* Títulos en negrita */
-                    }
-                """)
+        self.ventana.input_buscarempleado.textChanged.connect(self.buscar_empleado)
+
+    def buscar_para_modificar(self):
+        dpi_buscado = self.ventana.input_buscar_dpi_mod.text()
+
+        if not dpi_buscado:
+            QMessageBox.warning(self.ventana, "Advertencia", "Ingresa un DPI para buscar.")
+            return
+
+        conexion = conectar()
+        if conexion is None: return
+
+        try:
+            cursor = conexion.cursor(dictionary=True)
+            query = "SELECT * FROM alumnos WHERE dpi = %s"
+            cursor.execute(query, (dpi_buscado,))
+            alumno = cursor.fetchone()
+
+            if alumno:
+                self.id_alumno_modificar = alumno['id']
+
+                self.ventana.input_mod_nombre.setText(alumno['nombre'])
+                self.ventana.input_mod_correo.setText(alumno['correo'])
+                self.ventana.input_mod_telefono.setText(alumno['telefono'])
+                self.ventana.input_mod_dpi.setText(alumno['dpi'])
+
+                QMessageBox.information(self.ventana, "Encontrado", "Modifica los datos y presiona Guardar.")
+            else:
+                QMessageBox.warning(self.ventana, "Error", "No se encontró ningún alumno con ese DPI.")
+
+        except Exception as e:
+            print(f"Error al buscar para modificar: {e}")
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+
+    def actualizar_alumno(self):
+        if self.id_alumno_modificar is None:
+            QMessageBox.warning(self.ventana, "Advertencia", "Primero busca un alumno para modificar.")
+            return
+
+        nuevo_nombre = self.ventana.input_mod_nombre.text()
+        nuevo_correo = self.ventana.input_mod_correo.text().lower().strip()
+        nuevo_telefono = self.ventana.input_mod_telefono.text()
+        nuevo_dpi = self.ventana.input_mod_dpi.text()
+
+        # (Opcional) Puedes meter aquí la misma validación de @gmail y @hotmail que ya tenías
+        if not nuevo_nombre or not nuevo_dpi or not nuevo_correo:
+            QMessageBox.warning(self.ventana, "Advertencia", "El nombre, el DPI y correo son obligatorios.")
+            return
+        else:
+            if "@gmail.com" not in nuevo_correo and "@hotmail.com" not in nuevo_correo:
+                QMessageBox.warning(self.ventana, "Advertencia", "El correo debe ser de dominio @gmail o @hotmail.")
+                return
+
+        conexion = conectar()
+        if conexion is None: return
+
+        try:
+            cursor = conexion.cursor()
+
+            query = """
+                    UPDATE alumnos
+                    SET nombre   = %s, \
+                        correo   = %s, \
+                        telefono = %s, \
+                        dpi      = %s
+                    WHERE id = %s \
+                    """
+            valores = (nuevo_nombre, nuevo_correo, nuevo_telefono, nuevo_dpi, self.id_alumno_modificar)
+
+            cursor.execute(query, valores)
+            conexion.commit()
+
+            QMessageBox.information(self.ventana, "Éxito", "Alumno actualizado correctamente.")
+
+            self.id_alumno_modificar = None
+            self.ventana.input_buscar_dpi_mod.clear()
+            self.ventana.input_mod_nombre.clear()
+            self.ventana.input_mod_correo.clear()
+            self.ventana.input_mod_telefono.clear()
+            self.ventana.input_mod_dpi.clear()
+
+            self.cargar_alumnos()
+
+        except Exception as e:
+            print(f"Error al actualizar: {e}")
+            QMessageBox.critical(self.ventana, "Error", f"No se pudo actualizar: {e}")
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+
 
     def limpiar(self):
+        #Tab Agregar Alumno
         self.ventana.input_nombre.clear()
         self.ventana.input_correo.clear()
         self.ventana.input_telefono.clear()
         self.ventana.input_dpi.clear()
+
+        #Tab Modificar Alumno
+        self.ventana.input_buscar_dpi_mod.clear()
+        self.ventana.input_mod_nombre.clear()
+        self.ventana.input_mod_correo.clear()
+        self.ventana.input_mod_telefono.clear()
+        self.ventana.input_mod_dpi.clear()
 
     def configurar_permisos(self):
         if self.rol != "admin":
@@ -151,3 +250,61 @@ class Principal:
     def buscar_alumno(self):
         texto_busqueda = self.ventana.input_buscar.text()
         self.cargar_alumnos(texto_busqueda)
+
+    def cargar_empleados(self, busqueda=""):
+        conexion = conectar()
+        if conexion is None:
+            return
+
+        try:
+            cursor = conexion.cursor(dictionary=True)
+
+            if busqueda == "":
+                query = "SELECT * FROM empleados"
+                cursor.execute(query)
+            else:
+                query = "SELECT * FROM empleados WHERE nombre LIKE %s"
+                termino = f"{busqueda}%"
+                cursor.execute(query, (termino,))
+
+            empleados = cursor.fetchall()
+
+            self.ventana.tabla_empleados.setRowCount(0)
+
+            self.ventana.tabla_empleados.setColumnCount(7)
+            self.ventana.tabla_empleados.setHorizontalHeaderLabels(
+                ['ID', 'Nombre', 'Correo', 'Teléfono', 'DPI', 'Fecha Nac.', 'Tipo'])
+
+            self.ventana.tabla_empleados.setColumnWidth(0, 50)  # ID fijo
+            self.ventana.tabla_empleados.setColumnWidth(1, 300)  # Nombre fijo
+
+            # 🔹 Esta línea hace que el Correo (columna 2) se estire llenando el espacio vacío
+            self.ventana.tabla_empleados.horizontalHeader().setSectionResizeMode(2, QHeaderView.Stretch)
+
+            self.ventana.tabla_empleados.setColumnWidth(3, 100)  # Teléfono fijo
+            self.ventana.tabla_empleados.setColumnWidth(4, 150)  # DPI fijo
+            self.ventana.tabla_empleados.setColumnWidth(5, 100)  # Fecha fijo
+            self.ventana.tabla_empleados.setColumnWidth(6, 100) # Tipo
+
+            for fila_idx, empleado in enumerate(empleados):
+                self.ventana.tabla_empleados.insertRow(fila_idx)
+
+                self.ventana.tabla_empleados.setItem(fila_idx, 0, QTableWidgetItem(str(empleado['id'])))
+                self.ventana.tabla_empleados.setItem(fila_idx, 1, QTableWidgetItem(str(empleado['nombre'])))
+                self.ventana.tabla_empleados.setItem(fila_idx, 2, QTableWidgetItem(str(empleado['correo'])))
+                self.ventana.tabla_empleados.setItem(fila_idx, 3, QTableWidgetItem(str(empleado['telefono'])))
+                self.ventana.tabla_empleados.setItem(fila_idx, 4, QTableWidgetItem(str(empleado['dpi'])))
+                self.ventana.tabla_empleados.setItem(fila_idx, 5, QTableWidgetItem(str(empleado['fecha_nacimiento'])))
+                self.ventana.tabla_empleados.setItem(fila_idx, 6, QTableWidgetItem(str(empleado['tipo'])))
+
+        except Exception as e:
+            print(f"Error al cargar la tabla: {e}")
+
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+
+    def buscar_empleado(self):
+        texto_busqueda = self.ventana.input_buscarempleado.text()
+        self.cargar_empleados(texto_busqueda)
