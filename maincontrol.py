@@ -1,5 +1,5 @@
-from PySide6.QtCore import QSize, QDate
-from PySide6.QtWidgets import QMessageBox, QTableWidgetItem, QHeaderView
+from PySide6.QtCore import QSize, QDate, Qt
+from PySide6.QtWidgets import QMessageBox, QTableWidgetItem, QHeaderView, QListWidgetItem
 from conexion_db import conectar
 
 class Principal:
@@ -14,6 +14,16 @@ class Principal:
         self.cargar_empleados()
         self.cargar_productos()
         self.cargar_invitados()
+        self.cargar_carreras()
+        self.cargar_eventos_en_tabla()
+
+        # Cargar combos al iniciar
+        self.cargar_datos_eventos()
+
+        # Conectar botones
+        self.ventana.btn_agregar_alumno.clicked.connect(self.agregar_alumno_a_lista)
+        self.ventana.btn_guardar_evento.clicked.connect(self.guardar_evento_completo)
+        self.ventana.btn_agregar_invitado.clicked.connect(self.agregar_invitado_a_lista)
 
         # Estas son variables al momento de buscar para modificar
         self.id_alumno_modificar = None
@@ -42,17 +52,21 @@ class Principal:
 
         self.ventana.btn_limpiar_invitado.clicked.connect(self.limpiar)
 
+        self.ventana.btn_limpiar_carrera.clicked.connect(self.limpiar)
+
         # Botones para guardar
         self.ventana.btn_guardar_alumno.clicked.connect(self.agregar_alumno)
         self.ventana.btn_guardar_empleado.clicked.connect(self.agregar_empleado)
         self.ventana.btn_guardar_producto.clicked.connect(self.agregar_producto)
         self.ventana.btn_guardar_invitado.clicked.connect(self.agregar_invitado)
+        self.ventana.btn_guardar_carrera.clicked.connect(self.agregar_carrera)
 
         # Inputs para buscar
         self.ventana.input_buscar.textChanged.connect(self.buscar_alumno)
         self.ventana.input_buscarempleado.textChanged.connect(self.buscar_empleado)
         self.ventana.input_buscarproducto.textChanged.connect(self.buscar_producto)
         self.ventana.input_buscarinvitado.textChanged.connect(self.buscar_invitado)
+        self.ventana.input_buscarcarrera.textChanged.connect(self.buscar_carrera)
 
     def limpiar(self):
         #Tab Agregar Alumno
@@ -101,6 +115,10 @@ class Principal:
         self.ventana.input_correo_invitado.clear()
         self.ventana.input_telefono_invitado.clear()
         self.ventana.input_dpi_invitado.clear()
+
+        #Tab Nueva Carrera
+        self.ventana.input_nombre_carrera.clear()
+        self.ventana.input_precio_carrera.clear()
 
     def configurar_permisos(self):
         if self.rol != "admin":
@@ -832,3 +850,278 @@ class Principal:
     def buscar_invitado(self):
         texto_busqueda = self.ventana.input_buscarinvitado.text()
         self.cargar_invitados(texto_busqueda)
+
+    #Manejo datos Eventos
+    def agregar_carrera(self):
+        nombre = self.ventana.input_nombre_carrera.text()
+        texto_precio = self.ventana.input_precio_carrera.text().strip()
+
+        try:
+            precio = float(texto_precio)
+        except:
+            QMessageBox.critical(self.ventana, "Error", "Ingrese un precio Válido.")
+            return
+
+        if not nombre or not precio:
+            QMessageBox.warning(self.ventana, "Advertencia", "Todos los campos son obligatorios.")
+            return
+
+        conexion = conectar()
+        if conexion is None:
+            QMessageBox.critical(self.ventana, "Error", "No hay conexión a la base de datos.")
+            return
+
+        try:
+            cursor = conexion.cursor()
+
+            query = """
+                    INSERT INTO carreras (nombre, precio)
+                    VALUES (%s, %s) \
+                    """
+            valores = (nombre, precio)
+
+            cursor.execute(query, valores)
+
+            conexion.commit()
+
+            QMessageBox.information(self.ventana, "Éxito", "Carrera registrada correctamente.")
+
+            self.ventana.input_nombre_carrera.clear()
+            self.ventana.input_precio_carrera.clear()
+            self.cargar_carreras()
+
+        except Exception as e:
+            QMessageBox.critical(self.ventana, "Error", f"No se pudo guardar: {e}")
+            print(e)
+
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+
+    def cargar_carreras(self, busqueda=""):
+        conexion = conectar()
+        if conexion is None:
+            return
+
+        try:
+            cursor = conexion.cursor(dictionary=True)
+
+            if busqueda == "":
+                query = "SELECT * FROM carreras"
+                cursor.execute(query)
+            else:
+                query = "SELECT * FROM carreras WHERE nombre LIKE %s"
+                termino = f"{busqueda}%"
+                cursor.execute(query, (termino,))
+
+            carreras = cursor.fetchall()
+
+            self.ventana.tabla_carreras.setRowCount(0)
+
+            self.ventana.tabla_carreras.setColumnCount(3)
+            self.ventana.tabla_carreras.setHorizontalHeaderLabels(
+                ['ID', 'Nombre', 'Precio'])
+
+            self.ventana.tabla_carreras.setColumnWidth(0, 50)
+            self.ventana.tabla_carreras.setColumnWidth(2, 300)
+
+            self.ventana.tabla_carreras.horizontalHeader().setSectionResizeMode(1, QHeaderView.Stretch)
+
+            for fila_idx, carrera in enumerate(carreras):
+                self.ventana.tabla_carreras.insertRow(fila_idx)
+
+                self.ventana.tabla_carreras.setItem(fila_idx, 0, QTableWidgetItem(str(carrera['id'])))
+                self.ventana.tabla_carreras.setItem(fila_idx, 1, QTableWidgetItem(str(carrera['nombre'])))
+                self.ventana.tabla_carreras.setItem(fila_idx, 2, QTableWidgetItem(str(carrera['precio'])))
+
+        except Exception as e:
+            print(f"Error al cargar la tabla: {e}")
+
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+
+    def buscar_carrera(self):
+        texto_busqueda = self.ventana.input_buscarcarrera.text()
+        self.cargar_carreras(texto_busqueda)
+
+    #Manejo creación eventos
+    def cargar_datos_eventos(self):
+        conexion = conectar()
+        if conexion is None: return
+
+        try:
+            cursor = conexion.cursor(dictionary=True)
+
+            cursor.execute("SELECT id, nombre FROM carreras")
+            self.ventana.combo_carrera.clear()
+            for carrera in cursor.fetchall():
+                self.ventana.combo_carrera.addItem(carrera['nombre'], carrera['id'])
+
+            cursor.execute("SELECT id, nombre FROM alumnos")
+            self.ventana.combo_alumnos.clear()
+            for alumno in cursor.fetchall():
+                self.ventana.combo_alumnos.addItem(alumno['nombre'], alumno['id'])
+
+            cursor.execute("SELECT id, nombre FROM invitados")
+            self.ventana.combo_invitados.clear()
+            for invitado in cursor.fetchall():
+                self.ventana.combo_invitados.addItem(invitado['nombre'], invitado['id'])
+
+        except Exception as e:
+            print(f"Error al cargar datos para eventos: {e}")
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+
+    def agregar_alumno_a_lista(self):
+        nombre_alumno = self.ventana.combo_alumnos.currentText()
+        id_alumno = self.ventana.combo_alumnos.currentData()
+
+        if id_alumno is None:
+            return
+
+        for i in range(self.ventana.lista_alumnos_evento.count()):
+            item_existente = self.ventana.lista_alumnos_evento.item(i)
+            if item_existente.data(Qt.ItemDataRole.UserRole) == id_alumno:
+                QMessageBox.warning(self.ventana, "Aviso", "Este alumno ya está en la lista.")
+                return
+
+        nuevo_item = QListWidgetItem(nombre_alumno)
+        nuevo_item.setData(Qt.ItemDataRole.UserRole, id_alumno)
+
+        self.ventana.lista_alumnos_evento.addItem(nuevo_item)
+
+    def agregar_invitado_a_lista(self):
+        self.cargar_invitados()
+        nombre_invitado = self.ventana.combo_invitados.currentText()
+        id_invitado = self.ventana.combo_invitados.currentData()
+
+        if id_invitado is None:
+            return
+
+        for i in range(self.ventana.lista_invitados_evento.count()):
+            item_existente = self.ventana.lista_invitados_evento.item(i)
+            if item_existente.data(Qt.ItemDataRole.UserRole) == id_invitado:
+                QMessageBox.warning(self.ventana, "Aviso", "Este invitado ya está en la lista.")
+                return
+
+        nuevo_item = QListWidgetItem(nombre_invitado)
+        nuevo_item.setData(Qt.ItemDataRole.UserRole, id_invitado)
+
+        self.ventana.lista_invitados_evento.addItem(nuevo_item)
+
+    def guardar_evento_completo(self):
+        nombre_evento = self.ventana.input_nombre_evento.text().strip()
+        fecha_evento = self.ventana.input_fecha_evento.date().toString("yyyy-MM-dd")
+        id_carrera = self.ventana.combo_carrera.currentData()
+
+        if not nombre_evento or id_carrera is None:
+            QMessageBox.warning(self.ventana, "Advertencia", "El nombre y la carrera son obligatorios.")
+            return
+
+        if self.ventana.lista_alumnos_evento.count() == 0 or self.ventana.lista_invitados_evento.count() == 0:
+            QMessageBox.warning(self.ventana, "Advertencia",
+                                "Debes tener al menos un alumno y un invitado en las listas.")
+            return
+
+        conexion = conectar()
+        if conexion is None: return
+
+        try:
+            cursor = conexion.cursor(dictionary=True)
+
+            cursor.execute("SELECT COALESCE(MAX(id), 0) + 1 AS nuevo_id FROM listas_alumnos")
+            nuevo_id_lista_alumnos = cursor.fetchone()['nuevo_id']
+
+            query_lista_alumnos = "INSERT INTO listas_alumnos (id, alumno) VALUES (%s, %s)"
+            for i in range(self.ventana.lista_alumnos_evento.count()):
+                item = self.ventana.lista_alumnos_evento.item(i)
+                id_alumno_oculto = item.data(Qt.ItemDataRole.UserRole)
+                cursor.execute(query_lista_alumnos, (nuevo_id_lista_alumnos, id_alumno_oculto))
+
+            cursor.execute("SELECT COALESCE(MAX(id), 0) + 1 AS nuevo_id FROM lista_invitados")
+            nuevo_id_lista_invitados = cursor.fetchone()['nuevo_id']
+
+            query_lista_invitados = "INSERT INTO lista_invitados (id, invitado) VALUES (%s, %s)"
+            for i in range(self.ventana.lista_invitados_evento.count()):
+                item = self.ventana.lista_invitados_evento.item(i)
+                id_invitado_oculto = item.data(Qt.ItemDataRole.UserRole)
+                cursor.execute(query_lista_invitados, (nuevo_id_lista_invitados, id_invitado_oculto))
+
+            cursor = conexion.cursor()
+            query_evento = """
+                           INSERT INTO eventos (nombre, fecha, carrera, alumnos, invitados)
+                           VALUES (%s, %s, %s, %s, %s) \
+                           """
+            valores = (nombre_evento, fecha_evento, id_carrera, nuevo_id_lista_alumnos, nuevo_id_lista_invitados)
+            cursor.execute(query_evento, valores)
+
+            conexion.commit()
+
+            QMessageBox.information(self.ventana, "Éxito",
+                                    "Evento creado con sus listas de alumnos e invitados de forma exitosa.")
+
+            self.ventana.input_nombre_evento.clear()
+            self.ventana.lista_alumnos_evento.clear()
+            self.ventana.lista_invitados_evento.clear()
+            self.ventana.input_fecha_evento.setDate(QDate.currentDate())
+
+        except Exception as e:
+            conexion.rollback()
+            print(f"Error al guardar evento completo: {e}")
+            QMessageBox.critical(self.ventana, "Error", f"Fallo al guardar: {e}")
+
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+
+    def cargar_eventos_en_tabla(self):
+        try:
+            conexion = conectar()
+            cursor = conexion.cursor()
+
+            query = """
+                    SELECT e.id                                           AS id_evento, \
+                           e.nombre                                       AS nombre_evento, \
+                           e.fecha                                        AS fecha_evento, \
+                           GROUP_CONCAT(DISTINCT a.nombre SEPARATOR ', ') AS alumnos_inscritos, \
+                           GROUP_CONCAT(DISTINCT i.nombre SEPARATOR ', ') AS invitados_confirmados
+                    FROM eventos e
+                             LEFT JOIN listas_alumnos la ON e.alumnos = la.id
+                             LEFT JOIN alumnos a ON la.alumno = a.id
+                             LEFT JOIN lista_invitados li ON e.invitados = li.id
+                             LEFT JOIN invitados i ON li.invitado = i.id
+                    GROUP BY e.id; \
+                    """
+
+            cursor.execute(query)
+            eventos = cursor.fetchall()
+
+            self.ventana.tabla_eventos.setColumnCount(5)
+            self.ventana.tabla_eventos.setRowCount(0)
+            self.ventana.tabla_eventos.setHorizontalHeaderLabels(
+                ['ID', 'Nombre', 'Fecha', 'Lista Alumnos', 'Lista Invitados'])
+
+            self.ventana.tabla_eventos.setColumnWidth(0, 10)
+            self.ventana.tabla_eventos.setColumnWidth(1, 200)
+            self.ventana.tabla_eventos.setColumnWidth(2, 75)
+            self.ventana.tabla_eventos.horizontalHeader().setSectionResizeMode(3, QHeaderView.Stretch)
+            self.ventana.tabla_eventos.horizontalHeader().setSectionResizeMode(4, QHeaderView.Stretch)
+
+            for fila_idx, evento in enumerate(eventos):
+                self.ventana.tabla_eventos.insertRow(fila_idx)
+                for col_idx, dato in enumerate(evento):
+                    valor = str(dato) if dato is not None else ""
+                    item = QTableWidgetItem(valor)
+                    self.ventana.tabla_eventos.setItem(fila_idx, col_idx, item)
+
+            cursor.close()
+            conexion.close()
+
+        except Exception as e:
+            print(f"Error al cargar la tabla de eventos: {e}")
