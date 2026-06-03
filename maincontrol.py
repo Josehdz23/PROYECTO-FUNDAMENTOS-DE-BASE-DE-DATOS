@@ -13,6 +13,7 @@ class Principal:
         self.cargar_alumnos()
         self.cargar_empleados()
         self.cargar_productos()
+        self.cargar_invitados()
 
         # Estas son variables al momento de buscar para modificar
         self.id_alumno_modificar = None
@@ -39,15 +40,19 @@ class Principal:
         self.ventana.btn_limpiar_producto.clicked.connect(self.limpiar)
         self.ventana.btn_limpiar_producto_mod.clicked.connect(self.limpiar)
 
+        self.ventana.btn_limpiar_invitado.clicked.connect(self.limpiar)
+
         # Botones para guardar
         self.ventana.btn_guardar_alumno.clicked.connect(self.agregar_alumno)
         self.ventana.btn_guardar_empleado.clicked.connect(self.agregar_empleado)
         self.ventana.btn_guardar_producto.clicked.connect(self.agregar_producto)
+        self.ventana.btn_guardar_invitado.clicked.connect(self.agregar_invitado)
 
         # Inputs para buscar
         self.ventana.input_buscar.textChanged.connect(self.buscar_alumno)
         self.ventana.input_buscarempleado.textChanged.connect(self.buscar_empleado)
         self.ventana.input_buscarproducto.textChanged.connect(self.buscar_producto)
+        self.ventana.input_buscarinvitado.textChanged.connect(self.buscar_invitado)
 
     def limpiar(self):
         #Tab Agregar Alumno
@@ -90,6 +95,12 @@ class Principal:
         self.ventana.input_nombre_producto_mod.clear()
         self.ventana.input_precio_mod.clear()
         self.ventana.input_proveedor_mod.clear()
+
+        #Tab Nuevo Invitado
+        self.ventana.input_nombre_invitado.clear()
+        self.ventana.input_correo_invitado.clear()
+        self.ventana.input_telefono_invitado.clear()
+        self.ventana.input_dpi_invitado.clear()
 
     def configurar_permisos(self):
         if self.rol != "admin":
@@ -312,8 +323,8 @@ class Principal:
         password = self.ventana.input_password.text()
         fecha_nac = self.ventana.input_fecha_empleado.date().toString("yyyy-MM-dd")
 
-        if not nombre or not dpi or not correo:
-            QMessageBox.warning(self.ventana, "Advertencia", "El nombre, el DPI y correo son obligatorios.")
+        if not nombre or not dpi or not correo or not telefono or not password or not tipo:
+            QMessageBox.warning(self.ventana, "Advertencia", "Todos los campos son obligatorios.")
             return
         else:
             if "@gmail.com" not in correo and "@hotmail.com" not in correo:
@@ -717,3 +728,107 @@ class Principal:
             if conexion.is_connected():
                 cursor.close()
                 conexion.close()
+
+    # Manejo datos Invitados
+    def agregar_invitado(self):
+        nombre = self.ventana.input_nombre_invitado.text()
+        correo = self.ventana.input_correo_invitado.text()
+        telefono = self.ventana.input_telefono_invitado.text()
+        dpi = self.ventana.input_dpi_invitado.text()
+
+        if not nombre or not dpi or not telefono or not correo:
+            QMessageBox.warning(self.ventana, "Advertencia", "Todos los campos son obligatorios.")
+            return
+        else:
+            if "@gmail.com" not in correo and "@hotmail.com" not in correo:
+                QMessageBox.warning(self.ventana, "Advertencia", "El correo debe ser de dominio @gmail o @hotmail.")
+                return
+
+
+        conexion = conectar()
+        if conexion is None:
+            QMessageBox.critical(self.ventana, "Error", "No hay conexión a la base de datos.")
+            return
+
+        try:
+            cursor = conexion.cursor()
+
+            query = """
+                    INSERT INTO invitados (nombre, correo, telefono, dpi)
+                    VALUES (%s, %s, %s, %s) \
+                    """
+            valores = (nombre, correo, telefono, dpi)
+
+            cursor.execute(query, valores)
+
+            conexion.commit()
+
+            QMessageBox.information(self.ventana, "Éxito", "Invitado registrado correctamente.")
+
+            self.ventana.input_nombre_invitado.clear()
+            self.ventana.input_correo_invitado.clear()
+            self.ventana.input_telefono_invitado.clear()
+            self.ventana.input_dpi_invitado.clear()
+            self.cargar_invitados()
+
+        except Exception as e:
+            QMessageBox.critical(self.ventana, "Error", f"No se pudo guardar: {e}")
+            print(e)
+
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+
+    def cargar_invitados(self, busqueda=""):
+        conexion = conectar()
+        if conexion is None:
+            return
+
+        try:
+            cursor = conexion.cursor(dictionary=True)
+
+            if busqueda == "":
+                query = "SELECT * FROM invitados"
+                cursor.execute(query)
+            else:
+                query = "SELECT * FROM invitados WHERE nombre LIKE %s"
+                termino = f"{busqueda}%"
+                cursor.execute(query, (termino,))
+
+            invitados = cursor.fetchall()
+
+            self.ventana.tabla_invitados.setRowCount(0)
+
+            self.ventana.tabla_invitados.setColumnCount(5)
+            self.ventana.tabla_invitados.setHorizontalHeaderLabels(
+                ['ID', 'Nombre', 'Correo', 'Teléfono', 'DPI'])
+
+            self.ventana.tabla_invitados.setColumnWidth(0, 50)
+            self.ventana.tabla_invitados.setColumnWidth(1, 300)
+
+            self.ventana.tabla_invitados.horizontalHeader().setSectionResizeMode(2, QHeaderView.Stretch)
+
+            self.ventana.tabla_invitados.setColumnWidth(3, 100)
+            self.ventana.tabla_invitados.setColumnWidth(4, 150)
+
+            for fila_idx, invitado in enumerate(invitados):
+                self.ventana.tabla_invitados.insertRow(fila_idx)
+
+                self.ventana.tabla_invitados.setItem(fila_idx, 0, QTableWidgetItem(str(invitado['id'])))
+                self.ventana.tabla_invitados.setItem(fila_idx, 1, QTableWidgetItem(str(invitado['nombre'])))
+                self.ventana.tabla_invitados.setItem(fila_idx, 2, QTableWidgetItem(str(invitado['correo'])))
+                self.ventana.tabla_invitados.setItem(fila_idx, 3, QTableWidgetItem(str(invitado['telefono'])))
+                self.ventana.tabla_invitados.setItem(fila_idx, 4, QTableWidgetItem(str(invitado['dpi'])))
+
+        except Exception as e:
+            print(f"Error al cargar la tabla: {e}")
+
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+
+    def buscar_invitado(self):
+        texto_busqueda = self.ventana.input_buscarinvitado.text()
+        self.cargar_invitados(texto_busqueda)
