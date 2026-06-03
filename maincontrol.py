@@ -158,15 +158,14 @@ class Principal:
             self.ventana.tabla_alumnos.setHorizontalHeaderLabels(
                 ['ID', 'Nombre', 'Correo', 'Teléfono', 'DPI', 'Fecha Nac.'])
 
-            self.ventana.tabla_alumnos.setColumnWidth(0, 50)  # ID fijo
-            self.ventana.tabla_alumnos.setColumnWidth(1, 300)  # Nombre fijo
+            self.ventana.tabla_alumnos.setColumnWidth(0, 50)
+            self.ventana.tabla_alumnos.setColumnWidth(1, 300)
 
-            # 🔹 Esta línea hace que el Correo (columna 2) se estire llenando el espacio vacío
             self.ventana.tabla_alumnos.horizontalHeader().setSectionResizeMode(2, QHeaderView.Stretch)
 
-            self.ventana.tabla_alumnos.setColumnWidth(3, 100)  # Teléfono fijo
-            self.ventana.tabla_alumnos.setColumnWidth(4, 150)  # DPI fijo
-            self.ventana.tabla_alumnos.setColumnWidth(5, 100)  # Fecha fijo
+            self.ventana.tabla_alumnos.setColumnWidth(3, 100)
+            self.ventana.tabla_alumnos.setColumnWidth(4, 150)
+            self.ventana.tabla_alumnos.setColumnWidth(5, 100)
 
             for fila_idx, alumno in enumerate(alumnos):
                 self.ventana.tabla_alumnos.insertRow(fila_idx)
@@ -361,16 +360,15 @@ class Principal:
             self.ventana.tabla_empleados.setHorizontalHeaderLabels(
                 ['ID', 'Nombre', 'Correo', 'Teléfono', 'DPI', 'Fecha Nac.', 'Tipo'])
 
-            self.ventana.tabla_empleados.setColumnWidth(0, 50)  # ID fijo
-            self.ventana.tabla_empleados.setColumnWidth(1, 300)  # Nombre fijo
+            self.ventana.tabla_empleados.setColumnWidth(0, 50)
+            self.ventana.tabla_empleados.setColumnWidth(1, 300)
 
-            # 🔹 Esta línea hace que el Correo (columna 2) se estire llenando el espacio vacío
             self.ventana.tabla_empleados.horizontalHeader().setSectionResizeMode(2, QHeaderView.Stretch)
 
-            self.ventana.tabla_empleados.setColumnWidth(3, 100)  # Teléfono fijo
-            self.ventana.tabla_empleados.setColumnWidth(4, 150)  # DPI fijo
-            self.ventana.tabla_empleados.setColumnWidth(5, 100)  # Fecha fijo
-            self.ventana.tabla_empleados.setColumnWidth(6, 100) # Tipo
+            self.ventana.tabla_empleados.setColumnWidth(3, 100)
+            self.ventana.tabla_empleados.setColumnWidth(4, 150)
+            self.ventana.tabla_empleados.setColumnWidth(5, 100)
+            self.ventana.tabla_empleados.setColumnWidth(6, 100)
 
             for fila_idx, empleado in enumerate(empleados):
                 self.ventana.tabla_empleados.insertRow(fila_idx)
