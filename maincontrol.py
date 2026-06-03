@@ -10,6 +10,7 @@ class Principal:
         self.ventana.setMaximumSize(QSize(1280, 720))
         self.ventana.setMinimumSize(QSize(1280, 720))
         self.cargar_alumnos()
+        self.ventana.btn_limpiar.clicked.connect(self.limpiar)
         self.ventana.btn_guardar_alumno.clicked.connect(self.agregar_alumno)
         self.ventana.input_buscar.textChanged.connect(self.buscar_alumno)
         self.ventana.tabla_alumnos.setStyleSheet("""
@@ -23,6 +24,12 @@ class Principal:
                         font-weight: bold;         /* Títulos en negrita */
                     }
                 """)
+
+    def limpiar(self):
+        self.ventana.input_nombre.clear()
+        self.ventana.input_correo.clear()
+        self.ventana.input_telefono.clear()
+        self.ventana.input_dpi.clear()
 
     def configurar_permisos(self):
         if self.rol != "admin":

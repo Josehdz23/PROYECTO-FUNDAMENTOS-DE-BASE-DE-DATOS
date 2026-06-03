@@ -133,27 +133,27 @@
            <colorrole role="Button">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>74</red>
-              <green>74</green>
-              <blue>74</blue>
+              <red>47</red>
+              <green>36</green>
+              <blue>48</blue>
              </color>
             </brush>
            </colorrole>
            <colorrole role="Base">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>74</red>
-              <green>74</green>
-              <blue>74</blue>
+              <red>47</red>
+              <green>36</green>
+              <blue>48</blue>
              </color>
             </brush>
            </colorrole>
            <colorrole role="Window">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>74</red>
-              <green>74</green>
-              <blue>74</blue>
+              <red>47</red>
+              <green>36</green>
+              <blue>48</blue>
              </color>
             </brush>
            </colorrole>
@@ -162,27 +162,27 @@
            <colorrole role="Button">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>74</red>
-              <green>74</green>
-              <blue>74</blue>
+              <red>47</red>
+              <green>36</green>
+              <blue>48</blue>
              </color>
             </brush>
            </colorrole>
            <colorrole role="Base">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>74</red>
-              <green>74</green>
-              <blue>74</blue>
+              <red>47</red>
+              <green>36</green>
+              <blue>48</blue>
              </color>
             </brush>
            </colorrole>
            <colorrole role="Window">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>74</red>
-              <green>74</green>
-              <blue>74</blue>
+              <red>47</red>
+              <green>36</green>
+              <blue>48</blue>
              </color>
             </brush>
            </colorrole>
@@ -191,27 +191,27 @@
            <colorrole role="Button">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>74</red>
-              <green>74</green>
-              <blue>74</blue>
+              <red>47</red>
+              <green>36</green>
+              <blue>48</blue>
              </color>
             </brush>
            </colorrole>
            <colorrole role="Base">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>74</red>
-              <green>74</green>
-              <blue>74</blue>
+              <red>47</red>
+              <green>36</green>
+              <blue>48</blue>
              </color>
             </brush>
            </colorrole>
            <colorrole role="Window">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>74</red>
-              <green>74</green>
-              <blue>74</blue>
+              <red>47</red>
+              <green>36</green>
+              <blue>48</blue>
              </color>
             </brush>
            </colorrole>
@@ -222,7 +222,7 @@
          <font>
           <family>Eras Light ITC</family>
           <pointsize>12</pointsize>
-          <bold>false</bold>
+          <bold>true</bold>
          </font>
         </property>
         <property name="cursor">
@@ -232,8 +232,8 @@
          <bool>false</bool>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(74, 74, 74);
-</string>
+         <string notr="true">
+background-color: rgb(47, 36, 48);</string>
         </property>
         <property name="currentIndex">
          <number>0</number>
@@ -259,7 +259,7 @@
            <font>
             <family>Eras Light ITC</family>
             <pointsize>12</pointsize>
-            <bold>false</bold>
+            <bold>true</bold>
             <underline>false</underline>
             <strikeout>false</strikeout>
             <kerning>true</kerning>
@@ -285,7 +285,7 @@
            <font>
             <family>Eras Light ITC</family>
             <pointsize>12</pointsize>
-            <bold>false</bold>
+            <bold>true</bold>
            </font>
           </property>
           <property name="styleSheet">
@@ -308,7 +308,7 @@
            <font>
             <family>Eras Light ITC</family>
             <pointsize>12</pointsize>
-            <bold>false</bold>
+            <bold>true</bold>
            </font>
           </property>
           <property name="placeholderText">
@@ -328,7 +328,7 @@
            <font>
             <family>Eras Light ITC</family>
             <pointsize>12</pointsize>
-            <bold>false</bold>
+            <bold>true</bold>
            </font>
           </property>
           <property name="placeholderText">
@@ -348,7 +348,7 @@
            <font>
             <family>Eras Light ITC</family>
             <pointsize>12</pointsize>
-            <bold>false</bold>
+            <bold>true</bold>
            </font>
           </property>
           <property name="placeholderText">
@@ -405,7 +405,7 @@
            <font>
             <family>Eras Light ITC</family>
             <pointsize>12</pointsize>
-            <bold>false</bold>
+            <bold>true</bold>
            </font>
           </property>
           <property name="styleSheet">
@@ -428,7 +428,7 @@
            <font>
             <family>Eras Light ITC</family>
             <pointsize>12</pointsize>
-            <bold>false</bold>
+            <bold>true</bold>
            </font>
           </property>
           <property name="styleSheet">
@@ -451,7 +451,7 @@
            <font>
             <family>Eras Light ITC</family>
             <pointsize>12</pointsize>
-            <bold>false</bold>
+            <bold>true</bold>
            </font>
           </property>
           <property name="styleSheet">
@@ -474,7 +474,7 @@
            <font>
             <family>Eras Light ITC</family>
             <pointsize>12</pointsize>
-            <bold>false</bold>
+            <bold>true</bold>
            </font>
           </property>
           <property name="styleSheet">
@@ -488,7 +488,7 @@
           <property name="geometry">
            <rect>
             <x>590</x>
-            <y>450</y>
+            <y>440</y>
             <width>131</width>
             <height>51</height>
            </rect>
@@ -497,14 +497,41 @@
            <font>
             <family>Eras Light ITC</family>
             <pointsize>12</pointsize>
-            <bold>false</bold>
+            <bold>true</bold>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true"/>
+           <string notr="true">background-color: rgb(147, 197, 125);</string>
           </property>
           <property name="text">
            <string>Guardar</string>
+          </property>
+          <property name="autoDefault">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="btn_limpiar">
+          <property name="geometry">
+           <rect>
+            <x>750</x>
+            <y>440</y>
+            <width>131</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>12</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(207, 226, 255);
+color: rgb(0, 0, 0);</string>
+          </property>
+          <property name="text">
+           <string>Limpiar</string>
           </property>
          </widget>
         </widget>
@@ -531,27 +558,27 @@
              <colorrole role="Button">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>74</red>
-                <green>74</green>
-                <blue>74</blue>
+                <red>47</red>
+                <green>36</green>
+                <blue>48</blue>
                </color>
               </brush>
              </colorrole>
              <colorrole role="Base">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>74</red>
-                <green>74</green>
-                <blue>74</blue>
+                <red>47</red>
+                <green>36</green>
+                <blue>48</blue>
                </color>
               </brush>
              </colorrole>
              <colorrole role="Window">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>74</red>
-                <green>74</green>
-                <blue>74</blue>
+                <red>47</red>
+                <green>36</green>
+                <blue>48</blue>
                </color>
               </brush>
              </colorrole>
@@ -560,27 +587,27 @@
              <colorrole role="Button">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>74</red>
-                <green>74</green>
-                <blue>74</blue>
+                <red>47</red>
+                <green>36</green>
+                <blue>48</blue>
                </color>
               </brush>
              </colorrole>
              <colorrole role="Base">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>74</red>
-                <green>74</green>
-                <blue>74</blue>
+                <red>47</red>
+                <green>36</green>
+                <blue>48</blue>
                </color>
               </brush>
              </colorrole>
              <colorrole role="Window">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>74</red>
-                <green>74</green>
-                <blue>74</blue>
+                <red>47</red>
+                <green>36</green>
+                <blue>48</blue>
                </color>
               </brush>
              </colorrole>
@@ -589,32 +616,37 @@
              <colorrole role="Button">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>74</red>
-                <green>74</green>
-                <blue>74</blue>
+                <red>47</red>
+                <green>36</green>
+                <blue>48</blue>
                </color>
               </brush>
              </colorrole>
              <colorrole role="Base">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>74</red>
-                <green>74</green>
-                <blue>74</blue>
+                <red>47</red>
+                <green>36</green>
+                <blue>48</blue>
                </color>
               </brush>
              </colorrole>
              <colorrole role="Window">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
-                <red>74</red>
-                <green>74</green>
-                <blue>74</blue>
+                <red>47</red>
+                <green>36</green>
+                <blue>48</blue>
                </color>
               </brush>
              </colorrole>
             </disabled>
            </palette>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+           </font>
           </property>
           <property name="autoFillBackground">
            <bool>false</bool>
@@ -629,11 +661,17 @@
          <widget class="QLineEdit" name="input_buscar">
           <property name="geometry">
            <rect>
-            <x>260</x>
-            <y>20</y>
-            <width>113</width>
-            <height>26</height>
+            <x>330</x>
+            <y>10</y>
+            <width>241</width>
+            <height>31</height>
            </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>14</pointsize>
+           </font>
           </property>
          </widget>
          <widget class="QLabel" name="label_6">
@@ -641,9 +679,16 @@
            <rect>
             <x>0</x>
             <y>20</y>
-            <width>251</width>
+            <width>321</width>
             <height>21</height>
            </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>16</pointsize>
+            <bold>true</bold>
+           </font>
           </property>
           <property name="text">
            <string>BUSCAR POR NOMBRE ALUMNO</string>
