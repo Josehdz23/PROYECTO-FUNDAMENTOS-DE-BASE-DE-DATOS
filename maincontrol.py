@@ -1,4 +1,4 @@
-from PySide6.QtCore import QSize
+from PySide6.QtCore import QSize, QDate
 from PySide6.QtWidgets import QMessageBox, QTableWidgetItem, QHeaderView
 from conexion_db import conectar
 
@@ -12,30 +12,42 @@ class Principal:
         self.configurar_permisos()
         self.cargar_alumnos()
         self.cargar_empleados()
+        self.cargar_productos()
 
-        # Estos me sirven para mis tabs
+        # Estas son variables al momento de buscar para modificar
         self.id_alumno_modificar = None
         self.id_empleado_modficar = None
+        self.id_producto_modificar = None
 
         # Botones para las modificaciones
         self.ventana.btn_buscar_mod.clicked.connect(self.buscar_para_modificar)
         self.ventana.btn_guardar_mod.clicked.connect(self.actualizar_alumno)
+
         self.ventana.btn_buscar_mod_empleado.clicked.connect(self.buscar_para_modificar_empleado)
         self.ventana.btn_guardar_mod_empleado.clicked.connect(self.actualizar_empleado)
+
+        self.ventana.btn_buscar_mod_producto.clicked.connect(self.buscar_para_modificar_producto)
+        self.ventana.btn_guardar_producto_mod.clicked.connect(self.actualizar_producto)
 
         # Botones para la limpieza
         self.ventana.btn_limpiar.clicked.connect(self.limpiar)
         self.ventana.btn_limpiar_mod.clicked.connect(self.limpiar)
+
         self.ventana.btn_limpiar_empleado.clicked.connect(self.limpiar)
         self.ventana.btn_limpiar_mod_empleado.clicked.connect(self.limpiar)
+
+        self.ventana.btn_limpiar_producto.clicked.connect(self.limpiar)
+        self.ventana.btn_limpiar_producto_mod.clicked.connect(self.limpiar)
 
         # Botones para guardar
         self.ventana.btn_guardar_alumno.clicked.connect(self.agregar_alumno)
         self.ventana.btn_guardar_empleado.clicked.connect(self.agregar_empleado)
+        self.ventana.btn_guardar_producto.clicked.connect(self.agregar_producto)
 
-        # Botonoes para buscar
+        # Inputs para buscar
         self.ventana.input_buscar.textChanged.connect(self.buscar_alumno)
         self.ventana.input_buscarempleado.textChanged.connect(self.buscar_empleado)
+        self.ventana.input_buscarproducto.textChanged.connect(self.buscar_producto)
 
     def limpiar(self):
         #Tab Agregar Alumno
@@ -68,17 +80,27 @@ class Principal:
         self.ventana.input_rol_mod.clear()
         self.ventana.input_password_mod.clear()
 
+        #Tab Nuevo Producto
+        self.ventana.input_nombre_producto.clear()
+        self.ventana.input_precio.clear()
+        self.ventana.input_proveedor.clear()
+
+        #Tab Modificar Producto
+        self.ventana.input_buscar_id_mod.clear()
+        self.ventana.input_nombre_producto_mod.clear()
+        self.ventana.input_precio_mod.clear()
+        self.ventana.input_proveedor_mod.clear()
+
     def configurar_permisos(self):
         if self.rol != "admin":
             self.ventana.tabWidget.removeTab(17)
             self.ventana.tabWidget.removeTab(16)
-            self.ventana.tabWidget.removeTab(14)
-            self.ventana.tabWidget.removeTab(12)
+            self.ventana.tabWidget.removeTab(13)
+            self.ventana.tabWidget.removeTab(11)
             self.ventana.tabWidget.removeTab(9)
-            self.ventana.tabWidget.removeTab(7)
+            self.ventana.tabWidget.removeTab(8)
             self.ventana.tabWidget.removeTab(6)
             self.ventana.tabWidget.removeTab(5)
-            self.ventana.tabWidget.removeTab(4)
             self.ventana.tabWidget.removeTab(3)
             self.ventana.tabWidget.removeTab(2)
 
@@ -483,6 +505,210 @@ class Principal:
             self.ventana.input_password_mod.clear()
 
             self.cargar_empleados()
+
+        except Exception as e:
+            print(f"Error al actualizar: {e}")
+            QMessageBox.critical(self.ventana, "Error", f"No se pudo actualizar: {e}")
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+
+    # Manejo datos Productos
+    def agregar_producto(self):
+        nombre = self.ventana.input_nombre_producto.text()
+        texto_precio = self.ventana.input_precio.text().strip()
+        texto_proveedor = self.ventana.input_proveedor.text().strip()
+        fecha_cad = self.ventana.input_fecha_cad.date().toString("yyyy-MM-dd")
+
+        try:
+            precio = float(texto_precio)
+        except Exception as e:
+            QMessageBox.warning(self.ventana, "Error", "Por favor ingresa un precio válido (solo números y punto).")
+            return
+
+        try:
+            proveedor = int(texto_proveedor)
+        except Exception as e:
+            QMessageBox.warning(self.ventana, "Error", "Por favor ingresa un dato válido para el proveedor.")
+            return
+
+        if not nombre or not precio or not proveedor:
+            QMessageBox.warning(self.ventana, "Advertencia", "El nombre, el precio y proveedor son obligatorios.")
+            return
+
+        conexion = conectar()
+        if conexion is None:
+            QMessageBox.critical(self.ventana, "Error", "No hay conexión a la base de datos.")
+            return
+
+        try:
+            cursor = conexion.cursor()
+
+            query = """
+                    INSERT INTO productos (nombre, precio, fecha_caducidad, proveedor)
+                    VALUES (%s, %s, %s, %s) \
+                    """
+            valores = (nombre, precio, fecha_cad, proveedor)
+
+            cursor.execute(query, valores)
+
+            conexion.commit()
+
+            QMessageBox.information(self.ventana, "Éxito", "Producto registrado correctamente.")
+
+            self.ventana.input_nombre_producto.clear()
+            self.ventana.input_precio.clear()
+            self.ventana.input_proveedor.clear()
+            self.cargar_productos()
+
+        except Exception as e:
+            QMessageBox.critical(self.ventana, "Error", f"No se pudo guardar: {e}")
+            print(e)
+
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+
+    def cargar_productos(self, busqueda=""):
+        conexion = conectar()
+        if conexion is None:
+            return
+
+        try:
+            cursor = conexion.cursor(dictionary=True)
+
+            if busqueda == "":
+                query = "SELECT * FROM productos"
+                cursor.execute(query)
+            else:
+                query = "SELECT * FROM productos WHERE nombre LIKE %s"
+                termino = f"{busqueda}%"
+                cursor.execute(query, (termino,))
+
+            productos = cursor.fetchall()
+
+            self.ventana.tabla_productos.setRowCount(0)
+
+            self.ventana.tabla_productos.setColumnCount(5)
+            self.ventana.tabla_productos.setHorizontalHeaderLabels(
+                ['ID', 'Nombre', 'Precio', 'Proveedor', 'Fecha Caducidad'])
+
+            self.ventana.tabla_productos.setColumnWidth(0, 50)
+            self.ventana.tabla_productos.setColumnWidth(2, 300)
+
+            self.ventana.tabla_productos.horizontalHeader().setSectionResizeMode(1, QHeaderView.Stretch)
+
+            self.ventana.tabla_productos.setColumnWidth(3, 100)
+            self.ventana.tabla_productos.setColumnWidth(4, 150)
+
+            for fila_idx, producto in enumerate(productos):
+                self.ventana.tabla_productos.insertRow(fila_idx)
+
+                self.ventana.tabla_productos.setItem(fila_idx, 0, QTableWidgetItem(str(producto['id'])))
+                self.ventana.tabla_productos.setItem(fila_idx, 1, QTableWidgetItem(str(producto['nombre'])))
+                self.ventana.tabla_productos.setItem(fila_idx, 2, QTableWidgetItem(str(producto['precio'])))
+                self.ventana.tabla_productos.setItem(fila_idx, 3, QTableWidgetItem(str(producto['proveedor'])))
+                self.ventana.tabla_productos.setItem(fila_idx, 4, QTableWidgetItem(str(producto['fecha_caducidad'])))
+
+        except Exception as e:
+            print(f"Error al cargar la tabla: {e}")
+
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+
+    def buscar_producto(self):
+        texto_busqueda = self.ventana.input_buscarproducto.text()
+        self.cargar_productos(texto_busqueda)
+
+    def buscar_para_modificar_producto(self):
+        id_buscadovalidacion = self.ventana.input_buscar_id_mod.text().strip()
+
+        try:
+            id_buscado = int(id_buscadovalidacion)
+        except:
+            QMessageBox.warning(self.ventana, "Error", "Por favor ingresa un id válido.")
+            return
+
+        if not id_buscado:
+            QMessageBox.warning(self.ventana, "Advertencia", "Ingresa un ID para buscar.")
+            return
+
+        conexion = conectar()
+        if conexion is None: return
+
+        try:
+            cursor = conexion.cursor(dictionary=True)
+            query = "SELECT * FROM productos WHERE id = %s"
+            cursor.execute(query, (id_buscado,))
+            producto = cursor.fetchone()
+
+            if producto:
+                self.id_producto_modificar = producto['id']
+
+                self.ventana.input_nombre_producto_mod.setText(producto['nombre'])
+                self.ventana.input_precio_mod.setText(str(producto['precio']))
+                self.ventana.input_proveedor_mod.setText(str(producto['proveedor']))
+                fecha_mysql = producto['fecha_caducidad']
+                fecha_qt = QDate(fecha_mysql.year, fecha_mysql.month, fecha_mysql.day)
+                self.ventana.input_fecha_cad_mod.setDate(fecha_qt)
+
+                QMessageBox.information(self.ventana, "Encontrado", "Modifica los datos y presiona Guardar.")
+            else:
+                QMessageBox.warning(self.ventana, "Error", "No se encontró ningún producto con ese ID.")
+
+        except Exception as e:
+            print(f"Error al buscar para modificar: {e}")
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+
+    def actualizar_producto(self):
+        if self.id_producto_modificar is None:
+            QMessageBox.warning(self.ventana, "Advertencia", "Primero busca un producto para modificar.")
+            return
+
+        nuevo_nombre = self.ventana.input_nombre_producto_mod.text()
+        nuevo_precio = self.ventana.input_precio_mod.text()
+        nuevo_proveedor = self.ventana.input_proveedor_mod.text()
+        nueva_fecha_cad = self.ventana.input_fecha_cad_mod.text()
+
+        if not nuevo_nombre or not nuevo_precio or not nuevo_proveedor:
+            QMessageBox.warning(self.ventana, "Advertencia", "El nombre, el precio y proveedor son obligatorios.")
+            return
+
+        conexion = conectar()
+        if conexion is None: return
+
+        try:
+            cursor = conexion.cursor()
+
+            query = """
+                    UPDATE productos
+                    SET nombre   = %s, \
+                        precio   = %s, \
+                        proveedor = %s, \
+                        fecha_caducidad      = %s
+                    WHERE id = %s \
+                    """
+            valores = (nuevo_nombre, nuevo_precio, nuevo_proveedor, nueva_fecha_cad, self.id_producto_modificar)
+
+            cursor.execute(query, valores)
+            conexion.commit()
+
+            QMessageBox.information(self.ventana, "Éxito", "Producto actualizado correctamente.")
+
+            self.id_producto_modificar = None
+            self.ventana.input_buscar_id_mod.clear()
+            self.ventana.input_nombre_producto_mod.clear()
+            self.ventana.input_precio_mod.clear()
+            self.ventana.input_proveedor_mod.clear()
+
+            self.cargar_productos()
 
         except Exception as e:
             print(f"Error al actualizar: {e}")
