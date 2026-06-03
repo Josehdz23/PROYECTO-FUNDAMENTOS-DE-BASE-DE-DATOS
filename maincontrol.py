@@ -175,6 +175,7 @@ class Principal:
             self.ventana.input_telefono.clear()
             self.ventana.input_dpi.clear()
             self.cargar_alumnos()
+            self.cargar_datos_eventos()
 
         except Exception as e:
             QMessageBox.critical(self.ventana, "Error", f"No se pudo guardar: {e}")
@@ -788,6 +789,7 @@ class Principal:
             self.ventana.input_telefono_invitado.clear()
             self.ventana.input_dpi_invitado.clear()
             self.cargar_invitados()
+            self.cargar_datos_eventos()
 
         except Exception as e:
             QMessageBox.critical(self.ventana, "Error", f"No se pudo guardar: {e}")
@@ -851,7 +853,7 @@ class Principal:
         texto_busqueda = self.ventana.input_buscarinvitado.text()
         self.cargar_invitados(texto_busqueda)
 
-    #Manejo datos Eventos
+    #Manejo datos Carrera
     def agregar_carrera(self):
         nombre = self.ventana.input_nombre_carrera.text()
         texto_precio = self.ventana.input_precio_carrera.text().strip()
@@ -889,6 +891,7 @@ class Principal:
             self.ventana.input_nombre_carrera.clear()
             self.ventana.input_precio_carrera.clear()
             self.cargar_carreras()
+            self.cargar_datos_eventos()
 
         except Exception as e:
             QMessageBox.critical(self.ventana, "Error", f"No se pudo guardar: {e}")
@@ -996,7 +999,6 @@ class Principal:
         self.ventana.lista_alumnos_evento.addItem(nuevo_item)
 
     def agregar_invitado_a_lista(self):
-        self.cargar_invitados()
         nombre_invitado = self.ventana.combo_invitados.currentText()
         id_invitado = self.ventana.combo_invitados.currentData()
 
