@@ -1071,6 +1071,7 @@ class Principal:
             self.ventana.lista_alumnos_evento.clear()
             self.ventana.lista_invitados_evento.clear()
             self.ventana.input_fecha_evento.setDate(QDate.currentDate())
+            self.cargar_eventos_en_tabla()
 
         except Exception as e:
             conexion.rollback()
