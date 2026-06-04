@@ -16,9 +16,11 @@ class Principal:
         self.cargar_invitados()
         self.cargar_carreras()
         self.cargar_eventos_en_tabla()
+        self.cargar_inscripciones()
 
         # Cargar combos al iniciar
         self.cargar_datos_eventos()
+        self.cargar_datos_ins()
 
         # Conectar botones
         self.ventana.btn_agregar_alumno.clicked.connect(self.agregar_alumno_a_lista)
@@ -60,6 +62,7 @@ class Principal:
         self.ventana.btn_guardar_producto.clicked.connect(self.agregar_producto)
         self.ventana.btn_guardar_invitado.clicked.connect(self.agregar_invitado)
         self.ventana.btn_guardar_carrera.clicked.connect(self.agregar_carrera)
+        self.ventana.btn_guardar_ins.clicked.connect(self.agregar_inscripcion)
 
         # Inputs para buscar
         self.ventana.input_buscar.textChanged.connect(self.buscar_alumno)
@@ -67,6 +70,7 @@ class Principal:
         self.ventana.input_buscarproducto.textChanged.connect(self.buscar_producto)
         self.ventana.input_buscarinvitado.textChanged.connect(self.buscar_invitado)
         self.ventana.input_buscarcarrera.textChanged.connect(self.buscar_carrera)
+        self.ventana.input_buscarinscripcion.textChanged.connect(self.buscar_ins)
 
     def limpiar(self):
         #Tab Agregar Alumno
@@ -1128,3 +1132,134 @@ class Principal:
 
         except Exception as e:
             print(f"Error al cargar la tabla de eventos: {e}")
+
+    #Manejo nueva inscripcion
+    def agregar_inscripcion(self):
+        id_alumno = self.ventana.combo_alumnos_ins.currentData()
+        id_carrera = self.ventana.combo_carrera_ins.currentData()
+        fecha_ins = self.ventana.input_fecha_ins.text()
+
+        conexion = conectar()
+        if conexion is None:
+            QMessageBox.critical(self.ventana, "Error", "No hay conexión a la base de datos.")
+            return
+
+        try:
+            cursor = conexion.cursor()
+
+            query = """
+                    INSERT INTO inscripciones (carrera, alumno, fecha)
+                    VALUES (%s, %s, %s) \
+                    """
+            valores = (id_carrera, id_alumno, fecha_ins)
+
+            cursor.execute(query, valores)
+
+            conexion.commit()
+
+            QMessageBox.information(self.ventana, "Éxito", "Alumno registrado correctamente.")
+
+            self.cargar_inscripciones()
+
+        except Exception as e:
+            QMessageBox.critical(self.ventana, "Error", f"No se pudo guardar: {e}")
+            print("No se pudo guardar",e)
+
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+
+    def cargar_datos_ins(self):
+        conexion = conectar()
+        if conexion is None: return
+
+        try:
+            cursor = conexion.cursor(dictionary=True)
+
+            cursor.execute("SELECT id, nombre FROM carreras")
+            self.ventana.combo_carrera_ins.clear()
+            for carrera in cursor.fetchall():
+                self.ventana.combo_carrera_ins.addItem(carrera['nombre'], carrera['id'])
+
+            cursor.execute("SELECT id, nombre FROM alumnos")
+            self.ventana.combo_alumnos_ins.clear()
+            for alumno in cursor.fetchall():
+                self.ventana.combo_alumnos_ins.addItem(alumno['nombre'], alumno['id'])
+
+        except Exception as e:
+            print(f"Error al cargar datos para eventos: {e}")
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+
+    def cargar_inscripciones(self, busqueda=""):
+        conexion = conectar()
+        if conexion is None:
+            return
+
+        try:
+            cursor = conexion.cursor(dictionary=True)
+
+            if busqueda == "":
+                query = """
+                        SELECT i.id, \
+                               a.nombre AS alumno, \
+                               c.nombre AS carrera, \
+                               i.fecha
+                        FROM inscripciones i
+                                 LEFT JOIN alumnos a ON i.alumno = a.id
+                                 LEFT JOIN carreras c ON i.carrera = c.id \
+                        """
+                cursor.execute(query)
+            else:
+                query = """
+                        SELECT i.id, \
+                               a.nombre AS alumno, \
+                               c.nombre AS carrera, \
+                               i.fecha
+                        FROM inscripciones i
+                                 LEFT JOIN alumnos a ON i.alumno = a.id
+                                 LEFT JOIN carreras c ON i.carrera = c.id
+                        WHERE i.id LIKE %s \
+                           OR a.nombre LIKE %s \
+                           OR c.nombre LIKE %s \
+                        """
+                termino = f"%{busqueda}%"
+                cursor.execute(query, (termino, termino, termino))
+
+            inscripciones = cursor.fetchall()
+
+            self.ventana.tabla_inscripciones.setRowCount(0)
+
+            self.ventana.tabla_inscripciones.setColumnCount(4)
+            self.ventana.tabla_inscripciones.setHorizontalHeaderLabels(
+                ['ID', 'Nombre Alumno', 'Carrera', 'Fecha'])
+
+            self.ventana.tabla_inscripciones.setColumnWidth(0, 50)
+            self.ventana.tabla_inscripciones.setColumnWidth(2, 300)
+
+            self.ventana.tabla_inscripciones.horizontalHeader().setSectionResizeMode(1, QHeaderView.Stretch)
+
+            self.ventana.tabla_inscripciones.setColumnWidth(3, 100)
+
+            for fila_idx, inscripcion in enumerate(inscripciones):
+                self.ventana.tabla_inscripciones.insertRow(fila_idx)
+
+                self.ventana.tabla_inscripciones.setItem(fila_idx, 0, QTableWidgetItem(str(inscripcion['id'])))
+                self.ventana.tabla_inscripciones.setItem(fila_idx, 1, QTableWidgetItem(str(inscripcion['alumno'])))
+                self.ventana.tabla_inscripciones.setItem(fila_idx, 2, QTableWidgetItem(str(inscripcion['carrera'])))
+                self.ventana.tabla_inscripciones.setItem(fila_idx, 3, QTableWidgetItem(str(inscripcion['fecha'])))
+
+        except Exception as e:
+            print(f"Error al cargar la tabla: {e}")
+
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+
+    def buscar_ins(self):
+        texto_busqueda = self.ventana.input_buscarinscripcion.text()
+        self.cargar_inscripciones(texto_busqueda)
