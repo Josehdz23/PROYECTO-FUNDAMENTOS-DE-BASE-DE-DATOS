@@ -140,8 +140,8 @@ class Principal:
 
     def configurar_permisos(self):
         if self.rol != "admin":
+            self.ventana.tabWidget.removeTab(21)
             self.ventana.tabWidget.removeTab(17)
-            self.ventana.tabWidget.removeTab(16)
             self.ventana.tabWidget.removeTab(13)
             self.ventana.tabWidget.removeTab(11)
             self.ventana.tabWidget.removeTab(9)

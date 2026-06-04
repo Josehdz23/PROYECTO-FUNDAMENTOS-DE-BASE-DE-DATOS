@@ -5653,13 +5653,31 @@ color: rgb(0, 0, 0);</string>
           </property>
          </widget>
         </widget>
+        <widget class="QWidget" name="tab_3">
+         <attribute name="icon">
+          <iconset>
+           <normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Curso.png</normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Curso.png</iconset>
+         </attribute>
+         <attribute name="title">
+          <string>NUEVO CURSO</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_2">
+         <attribute name="icon">
+          <iconset>
+           <normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Curso.png</normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Curso.png</iconset>
+         </attribute>
+         <attribute name="title">
+          <string>CURSOS</string>
+         </attribute>
+        </widget>
         <widget class="QWidget" name="tab_asignaciones">
          <attribute name="icon">
           <iconset>
            <normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Asignar.png</normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Asignar.png</iconset>
          </attribute>
          <attribute name="title">
-          <string>ASIGNACIONES</string>
+          <string>ASIGNACION</string>
          </attribute>
          <widget class="QLabel" name="label_31">
           <property name="geometry">
@@ -5680,6 +5698,15 @@ color: rgb(0, 0, 0);</string>
            <bool>true</bool>
           </property>
          </widget>
+        </widget>
+        <widget class="QWidget" name="tab_6">
+         <attribute name="icon">
+          <iconset>
+           <normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Asignar.png</normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Asignar.png</iconset>
+         </attribute>
+         <attribute name="title">
+          <string>ASIGNACIONES</string>
+         </attribute>
         </widget>
         <widget class="QWidget" name="tab_proveedor">
          <attribute name="icon">
@@ -6393,6 +6420,24 @@ color: rgb(0, 0, 0);</string>
            <bool>false</bool>
           </property>
          </widget>
+        </widget>
+        <widget class="QWidget" name="tab_4">
+         <attribute name="icon">
+          <iconset>
+           <normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Venta.png</normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Venta.png</iconset>
+         </attribute>
+         <attribute name="title">
+          <string>VENTA</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_5">
+         <attribute name="icon">
+          <iconset>
+           <normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Venta.png</normaloff>../../Desktop/UDEO JOSÉ/Imagenes/Iconos/Venta.png</iconset>
+         </attribute>
+         <attribute name="title">
+          <string>VENTAS</string>
+         </attribute>
         </widget>
        </widget>
       </item>
