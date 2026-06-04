@@ -18,10 +18,13 @@ class Principal:
         self.cargar_eventos_en_tabla()
         self.cargar_inscripciones()
         self.cargar_proveedores()
+        #self.cargar_cursos()
+        self.cargar_horarios()
 
         # Cargar combos al iniciar
         self.cargar_datos_eventos()
         self.cargar_datos_ins()
+        self.cargar_datos_cursos()
 
         # Conectar botones
         self.ventana.btn_agregar_alumno.clicked.connect(self.agregar_alumno_a_lista)
@@ -59,6 +62,8 @@ class Principal:
 
         self.ventana.btn_limpiar_prov.clicked.connect(self.limpiar)
 
+        self.ventana.btn_limpiar_curso.clicked.connect(self.limpiar)
+
         # Botones para guardar
         self.ventana.btn_guardar_alumno.clicked.connect(self.agregar_alumno)
         self.ventana.btn_guardar_empleado.clicked.connect(self.agregar_empleado)
@@ -67,6 +72,8 @@ class Principal:
         self.ventana.btn_guardar_carrera.clicked.connect(self.agregar_carrera)
         self.ventana.btn_guardar_ins.clicked.connect(self.agregar_inscripcion)
         self.ventana.btn_guardar_prov.clicked.connect(self.agregar_proveedor)
+        self.ventana.btn_guardar_curso.clicked.connect(self.agregar_curso)
+        self.ventana.btn_guardar_horario.clicked.connect(self.agregar_horario)
 
         # Inputs para buscar
         self.ventana.input_buscar.textChanged.connect(self.buscar_alumno)
@@ -137,6 +144,12 @@ class Principal:
         self.ventana.input_zona.clear()
         self.ventana.input_avenida.clear()
         self.ventana.input_nit.clear()
+
+        #Tab Nuevo curso
+        self.ventana.input_nombre_curso.clear()
+        self.ventana.input_hora_inicio.clear()
+        self.ventana.input_hora_fin.clear()
+
 
     def configurar_permisos(self):
         if self.rol != "admin":
@@ -1398,3 +1411,154 @@ class Principal:
     def buscar_proveedor(self):
         texto_busqueda = self.ventana.input_buscarprov.text()
         self.cargar_proveedores(texto_busqueda)
+
+    #Manjeo nuevo curso
+    def agregar_curso(self):
+        nombre = self.ventana.input_nombre_curso.text()
+        carrera = self.ventana.combo_carrera_curso.currentData()
+        hora = self.ventana.combo_horario.currentData()
+
+
+        if not nombre:
+            QMessageBox.warning(self.ventana, "Advertencia", "Todos los campos son obligatorios.")
+            return
+
+
+        conexion = conectar()
+        if conexion is None:
+            QMessageBox.critical(self.ventana, "Error", "No hay conexión a la base de datos.")
+            return
+
+        try:
+            cursor = conexion.cursor()
+
+            query = """
+                    INSERT INTO cursos (nombre, horario, carrera)
+                    VALUES (%s, %s, %s) \
+                    """
+            valores = (nombre, hora, carrera)
+
+            cursor.execute(query, valores)
+
+            conexion.commit()
+
+            QMessageBox.information(self.ventana, "Éxito", "Curso registrado correctamente.")
+
+            self.limpiar()
+            #self.cargar_cursos()
+
+        except Exception as e:
+            QMessageBox.critical(self.ventana, "Error", f"No se pudo guardar: {e}")
+            print(e)
+
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+
+    def cargar_datos_cursos(self):
+        conexion = conectar()
+        if conexion is None: return
+
+        try:
+            cursor = conexion.cursor(dictionary=True)
+
+            cursor.execute("SELECT id, nombre FROM carreras")
+            self.ventana.combo_carrera_curso.clear()
+            for carrera in cursor.fetchall():
+                self.ventana.combo_carrera_curso.addItem(carrera['nombre'], carrera['id'])
+
+            cursor.execute("SELECT id FROM horarios")
+            self.ventana.combo_horario.clear()
+            for horario in cursor.fetchall():
+                self.ventana.combo_horario.addItem(str(horario['id']), horario['id'])
+
+        except Exception as e:
+            print(f"Error al cargar datos para horarios: {e}")
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+
+    def cargar_horarios(self):
+        conexion = conectar()
+        if conexion is None:
+            return
+
+        try:
+            cursor = conexion.cursor(dictionary=True)
+
+            query = "SELECT * FROM horarios"
+            cursor.execute(query)
+
+            horarios = cursor.fetchall()
+
+            self.ventana.tabla_horarios.setRowCount(0)
+
+            self.ventana.tabla_horarios.setColumnCount(3)
+            self.ventana.tabla_horarios.setHorizontalHeaderLabels(
+                ['ID', 'Hora Inicio', 'Hora Fin'])
+
+            self.ventana.tabla_horarios.setColumnWidth(0, 30)
+            self.ventana.tabla_horarios.setColumnWidth(1, 200)
+            self.ventana.tabla_horarios.setColumnWidth(2, 200)
+
+
+            for fila_idx, horario in enumerate(horarios):
+                self.ventana.tabla_horarios.insertRow(fila_idx)
+
+                self.ventana.tabla_horarios.setItem(fila_idx, 0, QTableWidgetItem(str(horario['id'])))
+                self.ventana.tabla_horarios.setItem(fila_idx, 1, QTableWidgetItem(str(horario['hora_inicio'])))
+                self.ventana.tabla_horarios.setItem(fila_idx, 2, QTableWidgetItem(str(horario['hora_fin'])))
+
+        except Exception as e:
+            print(f"Error al cargar la tabla: {e}")
+
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+
+    def agregar_horario(self):
+        hora_inicio = self.ventana.input_hora_inicio.text()
+        hora_fin = self.ventana.input_hora_fin.text()
+
+
+        if not hora_fin or not hora_inicio:
+            QMessageBox.warning(self.ventana, "Advertencia", "Todos los campos son obligatorios.")
+            return
+
+
+        conexion = conectar()
+        if conexion is None:
+            QMessageBox.critical(self.ventana, "Error", "No hay conexión a la base de datos.")
+            return
+
+        try:
+            cursor = conexion.cursor()
+
+            query = """
+                    INSERT INTO horarios (hora_inicio, hora_fin)
+                    VALUES (%s, %s) \
+                    """
+            valores = (hora_inicio, hora_fin)
+
+            cursor.execute(query, valores)
+
+            conexion.commit()
+
+            QMessageBox.information(self.ventana, "Éxito", "Horario registrado correctamente.")
+
+            self.ventana.input_hora_inicio.clear()
+            self.ventana.input_hora_fin.clear()
+            self.cargar_horarios()
+            self.cargar_datos_cursos()
+
+        except Exception as e:
+            QMessageBox.critical(self.ventana, "Error", f"No se pudo guardar: {e}")
+            print(e)
+
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
