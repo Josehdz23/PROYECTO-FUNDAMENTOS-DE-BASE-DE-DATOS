@@ -1147,23 +1147,34 @@ class Principal:
         try:
             cursor = conexion.cursor()
 
-            query = """
-                    INSERT INTO inscripciones (carrera, alumno, fecha)
-                    VALUES (%s, %s, %s) \
-                    """
+            query_validacion = """
+                               SELECT id \
+                               FROM inscripciones
+                               WHERE alumno = %s \
+                                 AND carrera = %s \
+                               """
+            cursor.execute(query_validacion, (id_alumno, id_carrera))
+            duplicado = cursor.fetchone()
+
+            if duplicado:
+                QMessageBox.warning(self.ventana, "Advertencia", "¡Este alumno ya está inscrito en esta carrera!")
+                return
+
+            query_insert = """
+                           INSERT INTO inscripciones (carrera, alumno, fecha)
+                           VALUES (%s, %s, %s) \
+                           """
             valores = (id_carrera, id_alumno, fecha_ins)
 
-            cursor.execute(query, valores)
-
+            cursor.execute(query_insert, valores)
             conexion.commit()
 
-            QMessageBox.information(self.ventana, "Éxito", "Alumno registrado correctamente.")
-
+            QMessageBox.information(self.ventana, "Éxito", "Alumno inscrito correctamente.")
             self.cargar_inscripciones()
 
         except Exception as e:
             QMessageBox.critical(self.ventana, "Error", f"No se pudo guardar: {e}")
-            print("No se pudo guardar",e)
+            print("No se pudo guardar", e)
 
         finally:
             if conexion.is_connected():
@@ -1263,3 +1274,5 @@ class Principal:
     def buscar_ins(self):
         texto_busqueda = self.ventana.input_buscarinscripcion.text()
         self.cargar_inscripciones(texto_busqueda)
+
+    #Manejo nuevo proveedor
