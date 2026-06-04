@@ -235,7 +235,7 @@
          <string notr="true"/>
         </property>
         <property name="currentIndex">
-         <number>15</number>
+         <number>0</number>
         </property>
         <property name="iconSize">
          <size>
@@ -274,7 +274,7 @@
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
+           <string notr="true"/>
           </property>
           <property name="text">
            <string>Nombre del alumno</string>
@@ -432,7 +432,7 @@
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
+           <string notr="true"/>
           </property>
           <property name="text">
            <string>Número de telefono</string>
@@ -457,9 +457,6 @@
             <bold>false</bold>
            </font>
           </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
-          </property>
           <property name="text">
            <string>Correo Electrónico</string>
           </property>
@@ -483,9 +480,6 @@
             <bold>false</bold>
            </font>
           </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
-          </property>
           <property name="text">
            <string>Fecha Nacimiento</string>
           </property>
@@ -508,9 +502,6 @@
             <pointsize>20</pointsize>
             <bold>false</bold>
            </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
           </property>
           <property name="text">
            <string>Número de DPI</string>
@@ -975,9 +966,6 @@ color: rgb(0, 0, 0);</string>
             <bold>false</bold>
            </font>
           </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
-          </property>
           <property name="text">
            <string>DPI ALUMNO</string>
           </property>
@@ -1041,9 +1029,6 @@ color: rgb(0, 0, 0);</string>
             <bold>false</bold>
            </font>
           </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
-          </property>
           <property name="text">
            <string>Correo Electrónico</string>
           </property>
@@ -1063,9 +1048,6 @@ color: rgb(0, 0, 0);</string>
             <pointsize>20</pointsize>
             <bold>false</bold>
            </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
           </property>
           <property name="text">
            <string>Número de telefono</string>
@@ -1156,9 +1138,6 @@ color: rgb(0, 0, 0);</string>
             <bold>false</bold>
            </font>
           </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
-          </property>
           <property name="text">
            <string>Número de DPI</string>
           </property>
@@ -1204,9 +1183,6 @@ color: rgb(0, 0, 0);</string>
             <strikeout>false</strikeout>
             <kerning>true</kerning>
            </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
           </property>
           <property name="text">
            <string>Nombre del alumno</string>
@@ -1356,9 +1332,6 @@ color: rgb(0, 0, 0);</string>
             <bold>false</bold>
            </font>
           </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
-          </property>
           <property name="text">
            <string>Número de DPI</string>
           </property>
@@ -1381,9 +1354,6 @@ color: rgb(0, 0, 0);</string>
             <pointsize>20</pointsize>
             <bold>false</bold>
            </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
           </property>
           <property name="text">
            <string>Número de telefono</string>
@@ -1431,9 +1401,6 @@ color: rgb(0, 0, 0);</string>
             <bold>false</bold>
            </font>
           </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
-          </property>
           <property name="text">
            <string>Fecha Nacimiento</string>
           </property>
@@ -1456,9 +1423,6 @@ color: rgb(0, 0, 0);</string>
             <pointsize>20</pointsize>
             <bold>false</bold>
            </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
           </property>
           <property name="text">
            <string>Correo Electrónico</string>
@@ -1628,9 +1592,6 @@ color: rgb(0, 0, 0);</string>
             <kerning>true</kerning>
            </font>
           </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
-          </property>
           <property name="text">
            <string>Nombre del empleado</string>
           </property>
@@ -1725,9 +1686,6 @@ color: rgb(0, 0, 0);</string>
             <bold>false</bold>
            </font>
           </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
-          </property>
           <property name="text">
            <string>Rol del empleado</string>
           </property>
@@ -1773,9 +1731,6 @@ color: rgb(0, 0, 0);</string>
             <pointsize>20</pointsize>
             <bold>false</bold>
            </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
           </property>
           <property name="text">
            <string>Contraseña </string>
@@ -2209,9 +2164,6 @@ color: rgb(0, 0, 0);</string>
             <bold>false</bold>
            </font>
           </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
-          </property>
           <property name="text">
            <string>Número de DPI</string>
           </property>
@@ -2231,9 +2183,6 @@ color: rgb(0, 0, 0);</string>
             <pointsize>20</pointsize>
             <bold>false</bold>
            </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
           </property>
           <property name="text">
            <string>Correo Electrónico</string>
@@ -2280,9 +2229,6 @@ color: rgb(0, 0, 0);</string>
             <strikeout>false</strikeout>
             <kerning>true</kerning>
            </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
           </property>
           <property name="text">
            <string>Nombre del alumno</string>
@@ -2369,9 +2315,6 @@ color: rgb(0, 0, 0);</string>
             <bold>false</bold>
            </font>
           </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
-          </property>
           <property name="text">
            <string>DPI EMPLEADO</string>
           </property>
@@ -2414,9 +2357,6 @@ color: rgb(0, 0, 0);</string>
             <pointsize>20</pointsize>
             <bold>false</bold>
            </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
           </property>
           <property name="text">
            <string>Número de telefono</string>
@@ -2481,9 +2421,6 @@ color: rgb(0, 0, 0);</string>
             <bold>false</bold>
            </font>
           </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
-          </property>
           <property name="text">
            <string>Contraseña</string>
           </property>
@@ -2526,9 +2463,6 @@ color: rgb(0, 0, 0);</string>
             <pointsize>20</pointsize>
             <bold>false</bold>
            </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
           </property>
           <property name="text">
            <string>Tipo</string>
@@ -2578,9 +2512,6 @@ color: rgb(0, 0, 0);</string>
             <bold>false</bold>
            </font>
           </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
-          </property>
           <property name="text">
            <string>Precio del producto</string>
           </property>
@@ -2603,9 +2534,6 @@ color: rgb(0, 0, 0);</string>
             <pointsize>20</pointsize>
             <bold>false</bold>
            </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
           </property>
           <property name="text">
            <string>Proveedor</string>
@@ -2679,9 +2607,6 @@ color: rgb(0, 0, 0);</string>
             <kerning>true</kerning>
            </font>
           </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
-          </property>
           <property name="text">
            <string>Nombre del producto</string>
           </property>
@@ -2704,9 +2629,6 @@ color: rgb(0, 0, 0);</string>
             <pointsize>20</pointsize>
             <bold>false</bold>
            </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
           </property>
           <property name="text">
            <string>Fecha de Caducidad</string>
@@ -3210,9 +3132,6 @@ color: rgb(0, 0, 0);</string>
             <bold>false</bold>
            </font>
           </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
-          </property>
           <property name="text">
            <string>Proveedor</string>
           </property>
@@ -3323,9 +3242,6 @@ color: rgb(0, 0, 0);</string>
             <bold>false</bold>
            </font>
           </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
-          </property>
           <property name="text">
            <string>Precio del producto</string>
           </property>
@@ -3375,9 +3291,6 @@ color: rgb(0, 0, 0);</string>
             <bold>false</bold>
            </font>
           </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
-          </property>
           <property name="text">
            <string>Fecha de Caducidad</string>
           </property>
@@ -3403,9 +3316,6 @@ color: rgb(0, 0, 0);</string>
             <strikeout>false</strikeout>
             <kerning>true</kerning>
            </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
           </property>
           <property name="text">
            <string>Nombre del producto</string>
@@ -3525,9 +3435,6 @@ color: rgb(0, 0, 0);</string>
             <bold>false</bold>
            </font>
           </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
-          </property>
           <property name="text">
            <string>ID DEL PRODUCTO</string>
           </property>
@@ -3595,9 +3502,6 @@ color: rgb(0, 0, 0);</string>
             <bold>false</bold>
            </font>
           </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
-          </property>
           <property name="text">
            <string>Número de telefono</string>
           </property>
@@ -3620,9 +3524,6 @@ color: rgb(0, 0, 0);</string>
             <pointsize>20</pointsize>
             <bold>false</bold>
            </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
           </property>
           <property name="text">
            <string>Correo Electrónico</string>
@@ -3695,9 +3596,6 @@ color: rgb(0, 0, 0);</string>
             <strikeout>false</strikeout>
             <kerning>true</kerning>
            </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
           </property>
           <property name="text">
            <string>Nombre del invitado</string>
@@ -3823,9 +3721,6 @@ color: rgb(0, 0, 0);</string>
             <pointsize>20</pointsize>
             <bold>false</bold>
            </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
           </property>
           <property name="text">
            <string>Número de DPI</string>
@@ -4307,9 +4202,6 @@ selection-color: rgb(255, 255, 255);</string>
             <kerning>true</kerning>
            </font>
           </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
-          </property>
           <property name="text">
            <string>Nombre del evento</string>
           </property>
@@ -4358,9 +4250,6 @@ selection-color: rgb(255, 255, 255);</string>
             <pointsize>20</pointsize>
             <bold>false</bold>
            </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
           </property>
           <property name="text">
            <string>Fecha del evento</string>
@@ -4425,9 +4314,6 @@ selection-color: rgb(255, 255, 255);</string>
             <bold>false</bold>
            </font>
           </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
-          </property>
           <property name="text">
            <string>Carrera del Evento</string>
           </property>
@@ -4451,9 +4337,6 @@ selection-color: rgb(255, 255, 255);</string>
             <bold>false</bold>
            </font>
           </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
-          </property>
           <property name="text">
            <string>Alumnos</string>
           </property>
@@ -4476,9 +4359,6 @@ selection-color: rgb(255, 255, 255);</string>
             <pointsize>20</pointsize>
             <bold>false</bold>
            </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
           </property>
           <property name="text">
            <string>Invitados</string>
@@ -4857,9 +4737,6 @@ selection-color: rgb(255, 255, 255);</string>
             <bold>false</bold>
            </font>
           </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
-          </property>
           <property name="text">
            <string>Precio de carrera</string>
           </property>
@@ -4986,9 +4863,6 @@ color: rgb(0, 0, 0);</string>
             <strikeout>false</strikeout>
             <kerning>true</kerning>
            </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
           </property>
           <property name="text">
            <string>Nombre de la carrera</string>
@@ -5358,9 +5232,6 @@ color: rgb(0, 0, 0);</string>
             <bold>false</bold>
            </font>
           </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
-          </property>
           <property name="text">
            <string>Carrera</string>
           </property>
@@ -5371,8 +5242,8 @@ color: rgb(0, 0, 0);</string>
          <widget class="QPushButton" name="btn_guardar_ins">
           <property name="geometry">
            <rect>
-            <x>750</x>
-            <y>240</y>
+            <x>580</x>
+            <y>230</y>
             <width>131</width>
             <height>51</height>
            </rect>
@@ -5413,9 +5284,6 @@ color: rgb(0, 0, 0);</string>
             <bold>false</bold>
            </font>
           </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
-          </property>
           <property name="text">
            <string>Alumno</string>
           </property>
@@ -5451,9 +5319,6 @@ color: rgb(0, 0, 0);</string>
             <pointsize>20</pointsize>
             <bold>false</bold>
            </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(0, 0, 0);</string>
           </property>
           <property name="text">
            <string>Fecha de inscripción</string>
@@ -5843,6 +5708,387 @@ color: rgb(0, 0, 0);</string>
            <bool>true</bool>
           </property>
          </widget>
+         <widget class="QLabel" name="label_71">
+          <property name="geometry">
+           <rect>
+            <x>50</x>
+            <y>100</y>
+            <width>271</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>20</pointsize>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Correo del proveedor</string>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="btn_limpiar_prov">
+          <property name="geometry">
+           <rect>
+            <x>490</x>
+            <y>470</y>
+            <width>131</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>12</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(207, 226, 255);
+color: rgb(0, 0, 0);</string>
+          </property>
+          <property name="text">
+           <string>Limpiar</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="input_correo_prov">
+          <property name="geometry">
+           <rect>
+            <x>330</x>
+            <y>100</y>
+            <width>301</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>12</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(27, 45, 48);</string>
+          </property>
+          <property name="placeholderText">
+           <string>proveedor@hotmail.com</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_72">
+          <property name="geometry">
+           <rect>
+            <x>50</x>
+            <y>30</y>
+            <width>271</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>20</pointsize>
+            <bold>false</bold>
+            <underline>false</underline>
+            <strikeout>false</strikeout>
+            <kerning>true</kerning>
+           </font>
+          </property>
+          <property name="text">
+           <string>Nombre del Proveedor</string>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="input_nombre_prov">
+          <property name="geometry">
+           <rect>
+            <x>330</x>
+            <y>30</y>
+            <width>301</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>12</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(27, 45, 48);</string>
+          </property>
+          <property name="echoMode">
+           <enum>QLineEdit::EchoMode::Normal</enum>
+          </property>
+          <property name="placeholderText">
+           <string>La Estrella</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="btn_guardar_prov">
+          <property name="geometry">
+           <rect>
+            <x>330</x>
+            <y>470</y>
+            <width>131</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>12</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(147, 197, 125);</string>
+          </property>
+          <property name="text">
+           <string>Guardar</string>
+          </property>
+          <property name="autoDefault">
+           <bool>true</bool>
+          </property>
+          <property name="default">
+           <bool>false</bool>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="input_telefono_prov">
+          <property name="geometry">
+           <rect>
+            <x>330</x>
+            <y>160</y>
+            <width>301</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>12</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(27, 45, 48);</string>
+          </property>
+          <property name="placeholderText">
+           <string>12345678</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_73">
+          <property name="geometry">
+           <rect>
+            <x>50</x>
+            <y>160</y>
+            <width>271</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>20</pointsize>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Teléfono del proveedor</string>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="input_calle">
+          <property name="geometry">
+           <rect>
+            <x>330</x>
+            <y>220</y>
+            <width>301</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>12</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(27, 45, 48);</string>
+          </property>
+          <property name="placeholderText">
+           <string>Calle 13</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_74">
+          <property name="geometry">
+           <rect>
+            <x>50</x>
+            <y>220</y>
+            <width>271</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>20</pointsize>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Dirección Calle</string>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="input_zona">
+          <property name="geometry">
+           <rect>
+            <x>330</x>
+            <y>280</y>
+            <width>301</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>12</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(27, 45, 48);</string>
+          </property>
+          <property name="placeholderText">
+           <string>Zona 2</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_75">
+          <property name="geometry">
+           <rect>
+            <x>50</x>
+            <y>280</y>
+            <width>271</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>20</pointsize>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Dirección Zona</string>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="input_avenida">
+          <property name="geometry">
+           <rect>
+            <x>330</x>
+            <y>340</y>
+            <width>301</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>12</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(27, 45, 48);</string>
+          </property>
+          <property name="placeholderText">
+           <string>Avenida 2</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_76">
+          <property name="geometry">
+           <rect>
+            <x>50</x>
+            <y>340</y>
+            <width>271</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>20</pointsize>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Dirección Avenida</string>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="input_nit">
+          <property name="geometry">
+           <rect>
+            <x>330</x>
+            <y>400</y>
+            <width>301</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>12</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(27, 45, 48);</string>
+          </property>
+          <property name="placeholderText">
+           <string>1234567890123</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_77">
+          <property name="geometry">
+           <rect>
+            <x>50</x>
+            <y>400</y>
+            <width>271</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>20</pointsize>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>NIT</string>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+         </widget>
         </widget>
         <widget class="QWidget" name="tab_proveedores">
          <attribute name="icon">
@@ -5869,6 +6115,282 @@ color: rgb(0, 0, 0);</string>
           </property>
           <property name="scaledContents">
            <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_78">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>5</y>
+            <width>351</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>16</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>BUSCAR INSCRIPCIÓN POR ID</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="input_buscarprov">
+          <property name="geometry">
+           <rect>
+            <x>380</x>
+            <y>5</y>
+            <width>241</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>14</pointsize>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(27, 45, 48);</string>
+          </property>
+         </widget>
+         <widget class="QTableWidget" name="tabla_proveedores">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>40</y>
+            <width>1261</width>
+            <height>561</height>
+           </rect>
+          </property>
+          <property name="palette">
+           <palette>
+            <active>
+             <colorrole role="WindowText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="Button">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="Text">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="ButtonText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="Base">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="Window">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="PlaceholderText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="128">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </active>
+            <inactive>
+             <colorrole role="WindowText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="Button">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="Text">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="ButtonText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="Base">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="Window">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="PlaceholderText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="128">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </inactive>
+            <disabled>
+             <colorrole role="WindowText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="Button">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="Text">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="ButtonText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="Base">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="Window">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="PlaceholderText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="128">
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </disabled>
+           </palette>
+          </property>
+          <property name="font">
+           <font>
+            <family>Segoe UI</family>
+            <pointsize>10</pointsize>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QTableWidget {
+                        background-color: #FFFFFF; /* Fondo blanco */
+                        color: #000000;            /* Texto negro */
+                    }
+                    QHeaderView::section {
+                        background-color: #E0E0E0; /* Fondo gris para los títulos */
+                        color: #000000;            /* Texto negro para los títulos */
+                        font-weight: bold;         /* Títulos en negrita */
+                    }</string>
+          </property>
+          <property name="dragEnabled">
+           <bool>false</bool>
+          </property>
+          <property name="alternatingRowColors">
+           <bool>false</bool>
           </property>
          </widget>
         </widget>

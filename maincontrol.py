@@ -17,6 +17,7 @@ class Principal:
         self.cargar_carreras()
         self.cargar_eventos_en_tabla()
         self.cargar_inscripciones()
+        self.cargar_proveedores()
 
         # Cargar combos al iniciar
         self.cargar_datos_eventos()
@@ -56,6 +57,8 @@ class Principal:
 
         self.ventana.btn_limpiar_carrera.clicked.connect(self.limpiar)
 
+        self.ventana.btn_limpiar_prov.clicked.connect(self.limpiar)
+
         # Botones para guardar
         self.ventana.btn_guardar_alumno.clicked.connect(self.agregar_alumno)
         self.ventana.btn_guardar_empleado.clicked.connect(self.agregar_empleado)
@@ -63,6 +66,7 @@ class Principal:
         self.ventana.btn_guardar_invitado.clicked.connect(self.agregar_invitado)
         self.ventana.btn_guardar_carrera.clicked.connect(self.agregar_carrera)
         self.ventana.btn_guardar_ins.clicked.connect(self.agregar_inscripcion)
+        self.ventana.btn_guardar_prov.clicked.connect(self.agregar_proveedor)
 
         # Inputs para buscar
         self.ventana.input_buscar.textChanged.connect(self.buscar_alumno)
@@ -71,6 +75,7 @@ class Principal:
         self.ventana.input_buscarinvitado.textChanged.connect(self.buscar_invitado)
         self.ventana.input_buscarcarrera.textChanged.connect(self.buscar_carrera)
         self.ventana.input_buscarinscripcion.textChanged.connect(self.buscar_ins)
+        self.ventana.input_buscarprov.textChanged.connect(self.buscar_proveedor)
 
     def limpiar(self):
         #Tab Agregar Alumno
@@ -123,6 +128,15 @@ class Principal:
         #Tab Nueva Carrera
         self.ventana.input_nombre_carrera.clear()
         self.ventana.input_precio_carrera.clear()
+
+        #Tab Nuevo Proveedor
+        self.ventana.input_nombre_prov.clear()
+        self.ventana.input_correo_prov.clear()
+        self.ventana.input_telefono_prov.clear()
+        self.ventana.input_calle.clear()
+        self.ventana.input_zona.clear()
+        self.ventana.input_avenida.clear()
+        self.ventana.input_nit.clear()
 
     def configurar_permisos(self):
         if self.rol != "admin":
@@ -1276,3 +1290,111 @@ class Principal:
         self.cargar_inscripciones(texto_busqueda)
 
     #Manejo nuevo proveedor
+    def agregar_proveedor(self):
+        nombre = self.ventana.input_nombre_prov.text()
+        correo = self.ventana.input_correo_prov.text()
+        telefono = self.ventana.input_telefono_prov.text()
+        calle = self.ventana.input_calle.text()
+        zona = self.ventana.input_zona.text()
+        avenida = self.ventana.input_avenida.text()
+        nit = self.ventana.input_nit.text()
+
+        if not nombre or not nit or not correo or not telefono or not calle or not avenida or not zona:
+            QMessageBox.warning(self.ventana, "Advertencia", "Todos los campos son obligatorios.")
+            return
+        else:
+            if "@gmail.com" not in correo and "@hotmail.com" not in correo:
+                QMessageBox.warning(self.ventana, "Advertencia", "El correo debe ser de dominio @gmail o @hotmail.")
+                return
+
+
+        conexion = conectar()
+        if conexion is None:
+            QMessageBox.critical(self.ventana, "Error", "No hay conexión a la base de datos.")
+            return
+
+        try:
+            cursor = conexion.cursor()
+
+            query = """
+                    INSERT INTO proveedores (nombre, correo, telefono, direccion_calle, direccion_zona, direccion_avenida, nit)
+                    VALUES (%s, %s, %s, %s, %s, %s, %s) \
+                    """
+            valores = (nombre, correo, telefono, calle, zona, avenida, nit)
+
+            cursor.execute(query, valores)
+
+            conexion.commit()
+
+            QMessageBox.information(self.ventana, "Éxito", "Proveedor registrado correctamente.")
+
+            self.limpiar()
+            self.cargar_proveedores()
+
+        except Exception as e:
+            QMessageBox.critical(self.ventana, "Error", f"No se pudo guardar: {e}")
+            print(e)
+
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+
+    def cargar_proveedores(self, busqueda=""):
+        conexion = conectar()
+        if conexion is None:
+            return
+
+        try:
+            cursor = conexion.cursor(dictionary=True)
+
+            if busqueda == "":
+                query = "SELECT * FROM proveedores"
+                cursor.execute(query)
+            else:
+                query = "SELECT * FROM proveedores WHERE nombre LIKE %s"
+                termino = f"{busqueda}%"
+                cursor.execute(query, (termino,))
+
+            proveedores = cursor.fetchall()
+
+            self.ventana.tabla_proveedores.setRowCount(0)
+
+            self.ventana.tabla_proveedores.setColumnCount(8)
+            self.ventana.tabla_proveedores.setHorizontalHeaderLabels(
+                ['ID', 'Nombre', 'Correo', 'Teléfono', 'Calle', 'Zona', 'Avenida', 'Nit'])
+
+            self.ventana.tabla_proveedores.setColumnWidth(0, 50)
+            self.ventana.tabla_proveedores.setColumnWidth(1, 100)
+
+            self.ventana.tabla_proveedores.horizontalHeader().setSectionResizeMode(2, QHeaderView.Stretch)
+
+            self.ventana.tabla_proveedores.setColumnWidth(3, 100)
+            self.ventana.tabla_proveedores.setColumnWidth(4, 150)
+            self.ventana.tabla_proveedores.setColumnWidth(5, 100)
+            self.ventana.tabla_proveedores.setColumnWidth(6, 100)
+            self.ventana.tabla_proveedores.setColumnWidth(7, 100)
+
+            for fila_idx, proveedor in enumerate(proveedores):
+                self.ventana.tabla_proveedores.insertRow(fila_idx)
+
+                self.ventana.tabla_proveedores.setItem(fila_idx, 0, QTableWidgetItem(str(proveedor['id'])))
+                self.ventana.tabla_proveedores.setItem(fila_idx, 1, QTableWidgetItem(str(proveedor['nombre'])))
+                self.ventana.tabla_proveedores.setItem(fila_idx, 2, QTableWidgetItem(str(proveedor['correo'])))
+                self.ventana.tabla_proveedores.setItem(fila_idx, 3, QTableWidgetItem(str(proveedor['telefono'])))
+                self.ventana.tabla_proveedores.setItem(fila_idx, 4, QTableWidgetItem(str(proveedor['direccion_calle'])))
+                self.ventana.tabla_proveedores.setItem(fila_idx, 5, QTableWidgetItem(str(proveedor['direccion_zona'])))
+                self.ventana.tabla_proveedores.setItem(fila_idx, 6, QTableWidgetItem(str(proveedor['direccion_avenida'])))
+                self.ventana.tabla_proveedores.setItem(fila_idx, 7, QTableWidgetItem(str(proveedor['nit'])))
+
+        except Exception as e:
+            print(f"Error al cargar la tabla: {e}")
+
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+
+    def buscar_proveedor(self):
+        texto_busqueda = self.ventana.input_buscarprov.text()
+        self.cargar_proveedores(texto_busqueda)
