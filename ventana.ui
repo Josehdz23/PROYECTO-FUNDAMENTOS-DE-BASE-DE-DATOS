@@ -7575,11 +7575,11 @@ color: rgb(0, 0, 0);</string>
          <attribute name="title">
           <string>VENTA</string>
          </attribute>
-         <widget class="QLabel" name="label_93">
+         <widget class="QLabel" name="lbl_fondo">
           <property name="geometry">
            <rect>
-            <x>-20</x>
-            <y>-30</y>
+            <x>0</x>
+            <y>-10</y>
             <width>1261</width>
             <height>651</height>
            </rect>
@@ -7592,6 +7592,235 @@ color: rgb(0, 0, 0);</string>
           </property>
           <property name="scaledContents">
            <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QComboBox" name="combo_productos">
+          <property name="geometry">
+           <rect>
+            <x>700</x>
+            <y>60</y>
+            <width>211</width>
+            <height>41</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="btn_agregar_carrito">
+          <property name="geometry">
+           <rect>
+            <x>930</x>
+            <y>60</y>
+            <width>151</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>12</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(207, 226, 255);
+color: rgb(0, 0, 0);</string>
+          </property>
+          <property name="text">
+           <string>Agregar al carrito</string>
+          </property>
+         </widget>
+         <widget class="QListWidget" name="lista_carrito">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>50</y>
+            <width>381</width>
+            <height>551</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_104">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>6</y>
+            <width>271</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>18</pointsize>
+            <bold>false</bold>
+            <underline>false</underline>
+            <strikeout>false</strikeout>
+            <kerning>true</kerning>
+           </font>
+          </property>
+          <property name="text">
+           <string>Lista de Productos</string>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_105">
+          <property name="geometry">
+           <rect>
+            <x>420</x>
+            <y>60</y>
+            <width>271</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>18</pointsize>
+            <bold>false</bold>
+            <underline>false</underline>
+            <strikeout>false</strikeout>
+            <kerning>true</kerning>
+           </font>
+          </property>
+          <property name="text">
+           <string>PRODUCTO AL CARRITO</string>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_106">
+          <property name="geometry">
+           <rect>
+            <x>410</x>
+            <y>540</y>
+            <width>221</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>18</pointsize>
+            <bold>false</bold>
+            <underline>false</underline>
+            <strikeout>false</strikeout>
+            <kerning>true</kerning>
+           </font>
+          </property>
+          <property name="text">
+           <string>TOTAL DE LA VENTA</string>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+         </widget>
+         <widget class="QLabel" name="lbl_total_venta">
+          <property name="geometry">
+           <rect>
+            <x>660</x>
+            <y>540</y>
+            <width>221</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>18</pointsize>
+            <bold>false</bold>
+            <underline>false</underline>
+            <strikeout>false</strikeout>
+            <kerning>true</kerning>
+           </font>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="btn_guardar_venta">
+          <property name="geometry">
+           <rect>
+            <x>930</x>
+            <y>130</y>
+            <width>151</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>12</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(147, 197, 125);</string>
+          </property>
+          <property name="text">
+           <string>REALIZAR VENTA</string>
+          </property>
+          <property name="autoDefault">
+           <bool>true</bool>
+          </property>
+          <property name="default">
+           <bool>false</bool>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_107">
+          <property name="geometry">
+           <rect>
+            <x>420</x>
+            <y>130</y>
+            <width>271</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>18</pointsize>
+            <bold>false</bold>
+            <underline>false</underline>
+            <strikeout>false</strikeout>
+            <kerning>true</kerning>
+           </font>
+          </property>
+          <property name="text">
+           <string>DPI DEL ALUMNO </string>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="input_dpi_cliente">
+          <property name="geometry">
+           <rect>
+            <x>700</x>
+            <y>130</y>
+            <width>211</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>12</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(27, 45, 48);</string>
+          </property>
+          <property name="echoMode">
+           <enum>QLineEdit::EchoMode::Normal</enum>
+          </property>
+          <property name="placeholderText">
+           <string>1234567891234</string>
           </property>
          </widget>
         </widget>
@@ -7607,7 +7836,7 @@ color: rgb(0, 0, 0);</string>
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>-30</y>
+            <y>-10</y>
             <width>1261</width>
             <height>651</height>
            </rect>

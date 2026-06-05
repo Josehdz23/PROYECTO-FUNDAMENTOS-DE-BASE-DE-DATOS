@@ -7,6 +7,7 @@ class Principal:
         #Estos me inician el programa
         self.ventana = ventana
         self.rol = rol
+        self.carrito = []
         self.ventana.setMaximumSize(QSize(1280, 720))
         self.ventana.setMinimumSize(QSize(1280, 720))
         self.configurar_permisos()
@@ -31,11 +32,13 @@ class Principal:
         self.cargar_datos_ins()
         self.cargar_datos_cursos()
         self.cargar_datos_asignacion()
+        self.cargar_datos_venta()
 
         # Conectar botones
         self.ventana.btn_agregar_alumno.clicked.connect(self.agregar_alumno_a_lista)
         self.ventana.btn_guardar_evento.clicked.connect(self.guardar_evento_completo)
         self.ventana.btn_agregar_invitado.clicked.connect(self.agregar_invitado_a_lista)
+        self.ventana.btn_agregar_carrito.clicked.connect(self.agregar_al_carrito)
 
         # Estas son variables al momento de buscar para modificar
         self.id_alumno_modificar = None
@@ -83,6 +86,7 @@ class Principal:
         self.ventana.btn_guardar_curso.clicked.connect(self.agregar_curso)
         self.ventana.btn_guardar_horario.clicked.connect(self.agregar_horario)
         self.ventana.btn_guardar_asignacion.clicked.connect(self.agregar_asignacion)
+        self.ventana.btn_guardar_venta.clicked.connect(self.agregar_venta)
 
         # Inputs para buscar
         self.ventana.input_buscar.textChanged.connect(self.buscar_alumno)
@@ -637,6 +641,7 @@ class Principal:
             self.ventana.input_precio.clear()
             self.ventana.input_proveedor.clear()
             self.cargar_productos()
+            self.cargar_datos_venta()
 
         except Exception as e:
             QMessageBox.critical(self.ventana, "Error", f"No se pudo guardar: {e}")
@@ -1819,3 +1824,120 @@ class Principal:
     def buscar_asignacion(self):
         texto_busqueda = self.ventana.input_buscarasignacion.text()
         self.cargar_asignaciones(texto_busqueda)
+
+    #Manejo para la venta
+    def agregar_al_carrito(self):
+        id_producto = self.ventana.combo_productos.currentData()
+        nombre_producto = self.ventana.combo_productos.currentText()
+
+        if not id_producto:
+            QMessageBox.warning(self.ventana, "Advertencia", "Selecciona un producto válido.")
+            return
+
+        conexion = conectar()
+        if conexion is None:
+            return
+
+        try:
+            cursor = conexion.cursor(dictionary=True)
+            cursor.execute("SELECT precio FROM productos WHERE id = %s", (id_producto,))
+            resultado = cursor.fetchone()
+
+            if resultado:
+                precio = float(resultado['precio'])
+
+                self.carrito.append({'id_producto': id_producto, 'precio': precio, 'nombre': nombre_producto})
+
+                texto_pantalla = f"{nombre_producto} - Q{precio:.2f}"
+                self.ventana.lista_carrito.addItem(texto_pantalla)
+
+                total_actual = sum(item['precio'] for item in self.carrito)
+                self.ventana.lbl_total_venta.setText(f"Total: Q{total_actual:.2f}")
+
+        except Exception as e:
+            print(f"Error al agregar al carrito: {e}")
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+
+    def agregar_venta(self):
+        if not self.carrito:
+            QMessageBox.warning(self.ventana, "Advertencia", "El carrito está vacío.")
+            return
+
+        dpi_cliente = self.ventana.input_dpi_cliente.text().strip()
+
+        if not dpi_cliente:
+            QMessageBox.warning(self.ventana, "Advertencia", "Debes ingresar el DPI del alumno (cliente).")
+            return
+
+        total_venta = sum(item['precio'] for item in self.carrito)
+        fecha_actual = QDate.currentDate().toString("yyyy-MM-dd")
+
+        conexion = conectar()
+        if conexion is None:
+            return
+
+        try:
+            cursor = conexion.cursor(dictionary=True)
+
+            cursor.execute("SELECT id FROM alumnos WHERE dpi = %s", (dpi_cliente,))
+            resultado_cliente = cursor.fetchone()
+
+            if not resultado_cliente:
+                QMessageBox.critical(self.ventana, "Error", "No existe ningún alumno con ese DPI registrado.")
+                return
+
+            id_cliente_real = resultado_cliente['id']
+
+            query_venta = "INSERT INTO ventas (cliente, total, fecha) VALUES (%s, %s, %s)"
+            cursor.execute(query_venta, (id_cliente_real, total_venta, fecha_actual))
+
+            id_nueva_venta = cursor.lastrowid
+
+            query_detalle = "INSERT INTO detalle_venta (venta_id, producto, subtotal) VALUES (%s, %s, %s)"
+            for item in self.carrito:
+                cursor.execute(query_detalle, (id_nueva_venta, item['id_producto'], item['precio']))
+
+            conexion.commit()
+            QMessageBox.information(self.ventana, "Éxito", "Venta registrada y asignada al alumno correctamente.")
+
+            self.carrito.clear()
+            self.ventana.lista_carrito.clear()
+            self.ventana.lbl_total_venta.setText("Total: Q0.00")
+            self.ventana.input_dpi_cliente.clear()
+
+        except Exception as e:
+            conexion.rollback()
+            QMessageBox.critical(self.ventana, "Error", f"No se pudo guardar la venta: {e}")
+
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+
+    def cargar_datos_venta(self):
+        conexion = conectar()
+        if conexion is None:
+            return
+
+        try:
+            cursor = conexion.cursor(dictionary=True)
+            cursor.execute("SELECT id, nombre FROM productos")
+            productos = cursor.fetchall()
+
+            self.ventana.combo_productos.clear()
+
+            self.ventana.combo_productos.addItem("Seleccione un producto...", None)
+
+            for prod in productos:
+                self.ventana.combo_productos.addItem(prod['nombre'], prod['id'])
+
+        except Exception as e:
+            print(f"Error al cargar los productos: {e}")
+
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
