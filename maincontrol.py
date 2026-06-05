@@ -1765,6 +1765,8 @@ class Principal:
 
             self.ventana.input_dpi_alumno.clear()
             self.ventana.input_dpi_docente.clear()
+            self.cargar_asignaciones()
+
 
         except Exception as e:
             QMessageBox.critical(self.ventana, "Error", f"No se pudo guardar: {e}")
