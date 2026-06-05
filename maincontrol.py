@@ -11,6 +11,8 @@ class Principal:
         self.ventana.setMaximumSize(QSize(1280, 720))
         self.ventana.setMinimumSize(QSize(1280, 720))
         self.configurar_permisos()
+
+        #Aquí se cargan las tablas de datos
         self.cargar_alumnos()
         self.cargar_empleados()
         self.cargar_productos()
@@ -22,6 +24,8 @@ class Principal:
         self.cargar_cursos()
         self.cargar_horarios()
         self.cargar_asignaciones()
+        self.cargar_ventas()
+        self.cargar_pagos()
 
         #Controlar mis inputs de asignación
         self.ventana.input_dpi_alumno.textChanged.connect(self.controlar_inputs_asignacion)
@@ -33,6 +37,7 @@ class Principal:
         self.cargar_datos_cursos()
         self.cargar_datos_asignacion()
         self.cargar_datos_venta()
+        self.cargar_combos_pagos()
 
         # Conectar botones
         self.ventana.btn_agregar_alumno.clicked.connect(self.agregar_alumno_a_lista)
@@ -87,6 +92,7 @@ class Principal:
         self.ventana.btn_guardar_horario.clicked.connect(self.agregar_horario)
         self.ventana.btn_guardar_asignacion.clicked.connect(self.agregar_asignacion)
         self.ventana.btn_guardar_venta.clicked.connect(self.agregar_venta)
+        self.ventana.btn_guardar_pago.clicked.connect(self.agregar_pago)
 
         # Inputs para buscar
         self.ventana.input_buscar.textChanged.connect(self.buscar_alumno)
@@ -98,6 +104,7 @@ class Principal:
         self.ventana.input_buscarprov.textChanged.connect(self.buscar_proveedor)
         self.ventana.input_buscarcurso.textChanged.connect(self.buscar_curso)
         self.ventana.input_buscarasignacion.textChanged.connect(self.buscar_asignacion)
+        self.ventana.input_buscarventa.textChanged.connect(self.cargar_ventas)
 
     def limpiar(self):
         #Tab Agregar Alumno
@@ -1922,6 +1929,7 @@ class Principal:
             self.ventana.lista_carrito.clear()
             self.ventana.lbl_total_venta.setText("Total: Q0.00")
             self.ventana.input_dpi_cliente.clear()
+            self.cargar_ventas()
 
         except Exception as e:
             conexion.rollback()
@@ -1952,6 +1960,220 @@ class Principal:
         except Exception as e:
             print(f"Error al cargar los productos: {e}")
 
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+
+    def cargar_ventas(self, busqueda=""):
+        conexion = conectar()
+        if conexion is None:
+            return
+
+        try:
+            cursor = conexion.cursor(dictionary=True)
+
+            if busqueda == "":
+                query = """
+                        SELECT v.id, \
+                               a.nombre AS nombre_cliente, \
+                               v.total, \
+                               v.fecha
+                        FROM ventas v
+                                 LEFT JOIN alumnos a ON v.cliente = a.id \
+                        """
+                cursor.execute(query)
+            else:
+                query = """
+                        SELECT v.id, \
+                               a.nombre AS nombre_cliente, \
+                               v.total, \
+                               v.fecha
+                        FROM ventas v
+                                 LEFT JOIN alumnos a ON v.cliente = a.id
+                        WHERE a.nombre LIKE %s \
+                        """
+                termino = f"%{busqueda}%"
+                cursor.execute(query, (termino,))
+
+            ventas = cursor.fetchall()
+
+            self.ventana.tabla_ventas.setRowCount(0)
+            self.ventana.tabla_ventas.setColumnCount(4)
+            self.ventana.tabla_ventas.setHorizontalHeaderLabels(
+                ['ID Venta', 'Cliente', 'Total', 'Fecha'])
+
+            self.ventana.tabla_ventas.setColumnWidth(0, 80)
+            self.ventana.tabla_ventas.horizontalHeader().setSectionResizeMode(1, QHeaderView.Stretch)
+            self.ventana.tabla_ventas.setColumnWidth(2, 120)
+            self.ventana.tabla_ventas.setColumnWidth(3, 100)
+
+            for fila_idx, venta in enumerate(ventas):
+                self.ventana.tabla_ventas.insertRow(fila_idx)
+
+                cliente_texto = venta['nombre_cliente'] if venta['nombre_cliente'] else "Cliente General"
+
+                total_formateado = f"Q{float(venta['total']):.2f}"
+
+                self.ventana.tabla_ventas.setItem(fila_idx, 0, QTableWidgetItem(str(venta['id'])))
+                self.ventana.tabla_ventas.setItem(fila_idx, 1, QTableWidgetItem(str(cliente_texto)))
+                self.ventana.tabla_ventas.setItem(fila_idx, 2, QTableWidgetItem(total_formateado))
+                self.ventana.tabla_ventas.setItem(fila_idx, 3, QTableWidgetItem(str(venta['fecha'])))
+
+        except Exception as e:
+            print(f"Error al cargar la tabla de ventas: {e}")
+
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+
+    def buscar_venta(self):
+        texto_busqueda = self.ventana.input_buscarventa.text()
+        self.cargar_ventas(texto_busqueda)
+
+    #Manejo para los pagos
+    def cargar_combos_pagos(self):
+        conexion = conectar()
+        if conexion is None:
+            return
+
+        try:
+            cursor = conexion.cursor(dictionary=True)
+
+            cursor.execute("""
+                           SELECT i.id, a.nombre
+                           FROM inscripciones i
+                                    LEFT JOIN alumnos a ON i.alumno = a.id
+                           """)
+            inscripciones = cursor.fetchall()
+
+            self.ventana.combo_inscripcion.clear()
+            self.ventana.combo_inscripcion.addItem("Ninguna...", None)  # Opción por defecto
+
+            for ins in inscripciones:
+                texto = f"Insc #{ins['id']} - {ins['nombre']}"
+                self.ventana.combo_inscripcion.addItem(texto, ins['id'])
+
+            cursor.execute("""
+                           SELECT v.id, a.nombre, v.total
+                           FROM ventas v
+                                    LEFT JOIN alumnos a ON v.cliente = a.id
+                           """)
+            ventas = cursor.fetchall()
+
+            self.ventana.combo_venta.clear()
+            self.ventana.combo_venta.addItem("Ninguna...", None)
+
+            for v in ventas:
+                texto = f"Venta #{v['id']} - {v['nombre']} (Q{v['total']})"
+                self.ventana.combo_venta.addItem(texto, v['id'])
+
+        except Exception as e:
+            print(f"Error al cargar combos de pago: {e}")
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+
+    def agregar_pago(self):
+        id_inscripcion = self.ventana.combo_inscripcion.currentData()
+        id_venta = self.ventana.combo_venta.currentData()
+
+        if not id_inscripcion and not id_venta:
+            QMessageBox.warning(self.ventana, "Advertencia",
+                                "Debes seleccionar al menos una inscripción o una venta para registrar el pago.")
+            return
+
+        fecha_actual = QDate.currentDate().toString("yyyy-MM-dd")
+
+        conexion = conectar()
+        if conexion is None:
+            return
+
+        try:
+            cursor = conexion.cursor(dictionary=True)
+            monto_total_calculado = 0.0
+
+            if id_inscripcion:
+                query_insc = """
+                             SELECT c.precio
+                             FROM inscripciones i
+                                      JOIN carreras c ON i.carrera = c.id
+                             WHERE i.id = %s \
+                             """
+                cursor.execute(query_insc, (id_inscripcion,))
+                resultado_insc = cursor.fetchone()
+
+                if resultado_insc and resultado_insc['precio']:
+                    monto_total_calculado += float(resultado_insc['precio'])
+
+            if id_venta:
+                query_venta = "SELECT total FROM ventas WHERE id = %s"
+                cursor.execute(query_venta, (id_venta,))
+                resultado_venta = cursor.fetchone()
+
+                if resultado_venta and resultado_venta['total']:
+                    monto_total_calculado += float(resultado_venta['total'])
+
+            query_pago = """
+                         INSERT INTO pagos (inscripcion, venta, fecha, Monto)
+                         VALUES (%s, %s, %s, %s) \
+                         """
+            cursor.execute(query_pago, (id_inscripcion, id_venta, fecha_actual, monto_total_calculado))
+            conexion.commit()
+
+            QMessageBox.information(self.ventana, "Éxito",
+                                    f"Pago registrado correctamente por un total de Q{monto_total_calculado:.2f}.")
+
+            self.ventana.combo_inscripcion.setCurrentIndex(0)
+            self.ventana.combo_venta.setCurrentIndex(0)
+
+            self.cargar_pagos()
+
+        except Exception as e:
+            conexion.rollback()
+            QMessageBox.critical(self.ventana, "Error", f"No se pudo guardar el pago: {e}")
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+
+    def cargar_pagos(self):
+        conexion = conectar()
+        if conexion is None:
+            return
+
+        try:
+            cursor = conexion.cursor(dictionary=True)
+            cursor.execute("SELECT id, inscripcion, venta, fecha, Monto FROM pagos")
+            pagos = cursor.fetchall()
+
+            self.ventana.tabla_pagos.setRowCount(0)
+            self.ventana.tabla_pagos.setColumnCount(5)
+            self.ventana.tabla_pagos.setHorizontalHeaderLabels(
+                ['ID Pago', 'ID Inscripción', 'ID Venta', 'Fecha', 'Monto'])
+
+            self.ventana.tabla_pagos.setColumnWidth(0, 70)
+            self.ventana.tabla_pagos.setColumnWidth(1, 120)
+            self.ventana.tabla_pagos.setColumnWidth(2, 120)
+            self.ventana.tabla_pagos.horizontalHeader().setSectionResizeMode(4, QHeaderView.Stretch)
+
+            for fila_idx, pago in enumerate(pagos):
+                self.ventana.tabla_pagos.insertRow(fila_idx)
+
+                insc_texto = str(pago['inscripcion']) if pago['inscripcion'] else "-"
+                venta_texto = str(pago['venta']) if pago['venta'] else "-"
+                monto_formateado = f"Q{float(pago['Monto']):.2f}"
+
+                self.ventana.tabla_pagos.setItem(fila_idx, 0, QTableWidgetItem(str(pago['id'])))
+                self.ventana.tabla_pagos.setItem(fila_idx, 1, QTableWidgetItem(insc_texto))
+                self.ventana.tabla_pagos.setItem(fila_idx, 2, QTableWidgetItem(venta_texto))
+                self.ventana.tabla_pagos.setItem(fila_idx, 3, QTableWidgetItem(str(pago['fecha'])))
+                self.ventana.tabla_pagos.setItem(fila_idx, 4, QTableWidgetItem(monto_formateado))
+
+        except Exception as e:
+            print(f"Error al cargar la tabla de pagos: {e}")
         finally:
             if conexion.is_connected():
                 cursor.close()
