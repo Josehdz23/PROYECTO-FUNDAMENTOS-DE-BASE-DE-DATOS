@@ -29,6 +29,7 @@ class Principal:
         self.cargar_datos_eventos()
         self.cargar_datos_ins()
         self.cargar_datos_cursos()
+        self.cargar_datos_asignacion()
 
         # Conectar botones
         self.ventana.btn_agregar_alumno.clicked.connect(self.agregar_alumno_a_lista)
@@ -68,6 +69,8 @@ class Principal:
 
         self.ventana.btn_limpiar_curso.clicked.connect(self.limpiar)
 
+        self.ventana.btn_limpiar_asignacion.clicked.connect(self.limpiar)
+
         # Botones para guardar
         self.ventana.btn_guardar_alumno.clicked.connect(self.agregar_alumno)
         self.ventana.btn_guardar_empleado.clicked.connect(self.agregar_empleado)
@@ -78,6 +81,7 @@ class Principal:
         self.ventana.btn_guardar_prov.clicked.connect(self.agregar_proveedor)
         self.ventana.btn_guardar_curso.clicked.connect(self.agregar_curso)
         self.ventana.btn_guardar_horario.clicked.connect(self.agregar_horario)
+        self.ventana.btn_guardar_asignacion.clicked.connect(self.agregar_asignacion)
 
         # Inputs para buscar
         self.ventana.input_buscar.textChanged.connect(self.buscar_alumno)
@@ -154,6 +158,10 @@ class Principal:
         self.ventana.input_nombre_curso.clear()
         self.ventana.input_hora_inicio.clear()
         self.ventana.input_hora_fin.clear()
+
+        #Tab Nueva asignación+
+        self.ventana.input_dpi_docente.clear()
+        self.ventana.input_dpi_alumno.clear()
 
 
     def configurar_permisos(self):
@@ -1451,6 +1459,7 @@ class Principal:
 
             self.limpiar()
             self.cargar_cursos()
+            self.cargar_datos_asignacion()
 
         except Exception as e:
             QMessageBox.critical(self.ventana, "Error", f"No se pudo guardar: {e}")
@@ -1588,7 +1597,6 @@ class Principal:
                         """
                 cursor.execute(query)
             else:
-                # 2. Actualizamos el query de búsqueda para que use los JOIN y busque por curso o carrera
                 query = """
                         SELECT c.id, \
                                c.nombre                                AS nombre_curso, \
@@ -1601,7 +1609,6 @@ class Principal:
                            OR ca.nombre LIKE %s; \
                         """
                 termino = f"%{busqueda}%"
-                # Como pusimos dos '%s' (para nombre o carrera), pasamos el termino dos veces
                 cursor.execute(query, (termino, termino))
 
             cursos = cursor.fetchall()
@@ -1620,7 +1627,6 @@ class Principal:
             for fila_idx, curso in enumerate(cursos):
                 self.ventana.tabla_cursos.insertRow(fila_idx)
 
-                # 3. Emparejamos los nombres con los ALIAS exactos del SELECT
                 self.ventana.tabla_cursos.setItem(fila_idx, 0, QTableWidgetItem(str(curso['id'])))
                 self.ventana.tabla_cursos.setItem(fila_idx, 1, QTableWidgetItem(str(curso['nombre_curso'])))
                 self.ventana.tabla_cursos.setItem(fila_idx, 2, QTableWidgetItem(str(curso['horario_completo'])))
@@ -1639,3 +1645,107 @@ class Principal:
         self.cargar_cursos(texto_busqueda)
 
     #Manejo Asignación
+    def controlar_inputs_asignacion(self):
+        texto_alumno = self.ventana.input_dpi_alumno.text().strip()
+        texto_docente = self.ventana.input_dpi_docente.text().strip()
+
+        if texto_alumno:
+            self.ventana.input_dpi_docente.setEnabled(False)
+        else:
+            self.ventana.input_dpi_docente.setEnabled(True)
+
+        if texto_docente:
+            self.ventana.input_dpi_alumno.setEnabled(False)
+        else:
+            self.ventana.input_dpi_alumno.setEnabled(True)
+
+    def cargar_datos_asignacion(self):
+        conexion = conectar()
+        if conexion is None: return
+
+        try:
+            cursor = conexion.cursor(dictionary=True)
+
+            cursor.execute("SELECT id, nombre FROM cursos")
+            self.ventana.combo_cursos.clear()
+            for curso in cursor.fetchall():
+                self.ventana.combo_cursos.addItem(curso['nombre'], curso['id'])
+
+        except Exception as e:
+            print(f"Error al cargar datos para horarios: {e}")
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+
+    def agregar_asignacion(self):
+        dpi_alumno = self.ventana.input_dpi_alumno.text().strip()
+        dpi_docente = self.ventana.input_dpi_docente.text().strip()
+        id_curso = self.ventana.combo_cursos.currentData()
+
+        if not dpi_alumno and not dpi_docente:
+            QMessageBox.warning(self.ventana, "Advertencia", "Debes ingresar el DPI de un alumno o de un docente.")
+            return
+
+        conexion = conectar()
+        if conexion is None:
+            return
+
+        try:
+            cursor = conexion.cursor(dictionary=True)
+            id_alumno_real = None
+            id_docente_real = None
+
+            if dpi_alumno:
+                cursor.execute("SELECT id FROM alumnos WHERE dpi = %s", (dpi_alumno,))
+                resultado = cursor.fetchone()
+                if not resultado:
+                    QMessageBox.critical(self.ventana, "Error", "No existe ningún alumno con ese DPI.")
+                    return
+                id_alumno_real = resultado['id']
+
+                # 🛡️ Verificamos si este alumno ya tiene el curso asignado
+                cursor.execute("SELECT id FROM asignaciones WHERE curso = %s AND alumno = %s",
+                               (id_curso, id_alumno_real))
+                if cursor.fetchone():
+                    QMessageBox.warning(self.ventana, "Advertencia",
+                                        "¡Este alumno ya se encuentra asignado a este curso!")
+                    return
+
+                # 2. VALIDACIÓN PARA DOCENTE
+            elif dpi_docente:
+                cursor.execute("SELECT id FROM empleados WHERE dpi = %s AND tipo = 'docente'", (dpi_docente,))
+                resultado = cursor.fetchone()
+                if not resultado:
+                    QMessageBox.critical(self.ventana, "Error", "El DPI no existe o el empleado NO es un docente.")
+                    return
+                id_docente_real = resultado['id']
+
+                # 🛡️ Verificamos si este docente ya tiene el curso asignado
+                cursor.execute("SELECT id FROM asignaciones WHERE curso = %s AND docente = %s",
+                               (id_curso, id_docente_real))
+                if cursor.fetchone():
+                    QMessageBox.warning(self.ventana, "Advertencia", "¡Este docente ya está a cargo de este curso!")
+                    return
+
+                # 3. SI PASA LAS VALIDACIONES, SE EJECUTA EL INSERT
+            query_insert = """
+                           INSERT INTO asignaciones (curso, alumno, docente)
+                           VALUES (%s, %s, %s) \
+                           """
+            cursor.execute(query_insert, (id_curso, id_alumno_real, id_docente_real))
+            conexion.commit()
+
+            QMessageBox.information(self.ventana, "Éxito", "Asignación registrada correctamente.")
+
+            self.ventana.input_dpi_alumno.clear()
+            self.ventana.input_dpi_docente.clear()
+
+        except Exception as e:
+            QMessageBox.critical(self.ventana, "Error", f"No se pudo guardar: {e}")
+
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+
