@@ -20,6 +20,7 @@ class Principal:
         self.cargar_proveedores()
         self.cargar_cursos()
         self.cargar_horarios()
+        self.cargar_asignaciones()
 
         #Controlar mis inputs de asignación
         self.ventana.input_dpi_alumno.textChanged.connect(self.controlar_inputs_asignacion)
@@ -92,6 +93,7 @@ class Principal:
         self.ventana.input_buscarinscripcion.textChanged.connect(self.buscar_ins)
         self.ventana.input_buscarprov.textChanged.connect(self.buscar_proveedor)
         self.ventana.input_buscarcurso.textChanged.connect(self.buscar_curso)
+        self.ventana.input_buscarasignacion.textChanged.connect(self.buscar_asignacion)
 
     def limpiar(self):
         #Tab Agregar Alumno
@@ -1704,7 +1706,6 @@ class Principal:
                     return
                 id_alumno_real = resultado['id']
 
-                # 🛡️ Verificamos si este alumno ya tiene el curso asignado
                 cursor.execute("SELECT id FROM asignaciones WHERE curso = %s AND alumno = %s",
                                (id_curso, id_alumno_real))
                 if cursor.fetchone():
@@ -1712,7 +1713,6 @@ class Principal:
                                         "¡Este alumno ya se encuentra asignado a este curso!")
                     return
 
-                # 2. VALIDACIÓN PARA DOCENTE
             elif dpi_docente:
                 cursor.execute("SELECT id FROM empleados WHERE dpi = %s AND tipo = 'docente'", (dpi_docente,))
                 resultado = cursor.fetchone()
@@ -1721,14 +1721,12 @@ class Principal:
                     return
                 id_docente_real = resultado['id']
 
-                # 🛡️ Verificamos si este docente ya tiene el curso asignado
                 cursor.execute("SELECT id FROM asignaciones WHERE curso = %s AND docente = %s",
                                (id_curso, id_docente_real))
                 if cursor.fetchone():
                     QMessageBox.warning(self.ventana, "Advertencia", "¡Este docente ya está a cargo de este curso!")
                     return
 
-                # 3. SI PASA LAS VALIDACIONES, SE EJECUTA EL INSERT
             query_insert = """
                            INSERT INTO asignaciones (curso, alumno, docente)
                            VALUES (%s, %s, %s) \
@@ -1749,3 +1747,75 @@ class Principal:
                 cursor.close()
                 conexion.close()
 
+    def cargar_asignaciones(self, busqueda=""):
+        conexion = conectar()
+        if conexion is None:
+            return
+
+        try:
+            cursor = conexion.cursor(dictionary=True)
+
+            if busqueda == "":
+                query = """
+                        SELECT asig.id, \
+                               cu.nombre AS nombre_curso, \
+                               al.nombre AS nombre_alumno, \
+                               em.nombre AS nombre_docente
+                        FROM asignaciones asig
+                                 LEFT JOIN cursos cu ON asig.curso = cu.id
+                                 LEFT JOIN alumnos al ON asig.alumno = al.id
+                                 LEFT JOIN empleados em ON asig.docente = em.id \
+                        """
+                cursor.execute(query)
+            else:
+                query = """
+                        SELECT asig.id, \
+                               cu.nombre AS nombre_curso, \
+                               al.nombre AS nombre_alumno, \
+                               em.nombre AS nombre_docente
+                        FROM asignaciones asig
+                                 LEFT JOIN cursos cu ON asig.curso = cu.id
+                                 LEFT JOIN alumnos al ON asig.alumno = al.id
+                                 LEFT JOIN empleados em ON asig.docente = em.id
+                        WHERE cu.nombre LIKE %s
+                           OR al.nombre LIKE %s
+                           OR em.nombre LIKE %s \
+                        """
+                termino = f"%{busqueda}%"
+                cursor.execute(query, (termino, termino, termino))
+
+            asignaciones = cursor.fetchall()
+
+            self.ventana.tabla_asignaciones.setRowCount(0)
+            self.ventana.tabla_asignaciones.setColumnCount(4)
+            self.ventana.tabla_asignaciones.setHorizontalHeaderLabels(
+                ['ID', 'Curso', 'Alumno Asignado', 'Docente a Cargo'])
+
+            self.ventana.tabla_asignaciones.setColumnWidth(0, 50)
+            self.ventana.tabla_asignaciones.setColumnWidth(2, 250)
+            self.ventana.tabla_asignaciones.setColumnWidth(3, 250)
+
+            self.ventana.tabla_asignaciones.horizontalHeader().setSectionResizeMode(1, QHeaderView.Stretch)
+
+            for fila_idx, asig in enumerate(asignaciones):
+                self.ventana.tabla_asignaciones.insertRow(fila_idx)
+
+                alumno_texto = asig['nombre_alumno'] if asig['nombre_alumno'] else "-"
+                docente_texto = asig['nombre_docente'] if asig['nombre_docente'] else "-"
+
+                self.ventana.tabla_asignaciones.setItem(fila_idx, 0, QTableWidgetItem(str(asig['id'])))
+                self.ventana.tabla_asignaciones.setItem(fila_idx, 1, QTableWidgetItem(str(asig['nombre_curso'])))
+                self.ventana.tabla_asignaciones.setItem(fila_idx, 2, QTableWidgetItem(str(alumno_texto)))
+                self.ventana.tabla_asignaciones.setItem(fila_idx, 3, QTableWidgetItem(str(docente_texto)))
+
+        except Exception as e:
+            print(f"Error al cargar la tabla de asignaciones: {e}")
+
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+
+    def buscar_asignacion(self):
+        texto_busqueda = self.ventana.input_buscarasignacion.text()
+        self.cargar_asignaciones(texto_busqueda)
