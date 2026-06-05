@@ -18,8 +18,12 @@ class Principal:
         self.cargar_eventos_en_tabla()
         self.cargar_inscripciones()
         self.cargar_proveedores()
-        #self.cargar_cursos()
+        self.cargar_cursos()
         self.cargar_horarios()
+
+        #Controlar mis inputs de asignación
+        self.ventana.input_dpi_alumno.textChanged.connect(self.controlar_inputs_asignacion)
+        self.ventana.input_dpi_docente.textChanged.connect(self.controlar_inputs_asignacion)
 
         # Cargar combos al iniciar
         self.cargar_datos_eventos()
@@ -83,6 +87,7 @@ class Principal:
         self.ventana.input_buscarcarrera.textChanged.connect(self.buscar_carrera)
         self.ventana.input_buscarinscripcion.textChanged.connect(self.buscar_ins)
         self.ventana.input_buscarprov.textChanged.connect(self.buscar_proveedor)
+        self.ventana.input_buscarcurso.textChanged.connect(self.buscar_curso)
 
     def limpiar(self):
         #Tab Agregar Alumno
@@ -1445,7 +1450,7 @@ class Principal:
             QMessageBox.information(self.ventana, "Éxito", "Curso registrado correctamente.")
 
             self.limpiar()
-            #self.cargar_cursos()
+            self.cargar_cursos()
 
         except Exception as e:
             QMessageBox.critical(self.ventana, "Error", f"No se pudo guardar: {e}")
@@ -1562,3 +1567,75 @@ class Principal:
             if conexion.is_connected():
                 cursor.close()
                 conexion.close()
+
+    def cargar_cursos(self, busqueda=""):
+        conexion = conectar()
+        if conexion is None:
+            return
+
+        try:
+            cursor = conexion.cursor(dictionary=True)
+
+            if busqueda == "":
+                query = """
+                        SELECT c.id, \
+                               c.nombre                                AS nombre_curso, \
+                               CONCAT(h.hora_inicio, ', ', h.hora_fin) AS horario_completo, \
+                               ca.nombre                               AS nombre_carrera
+                        FROM cursos c
+                                 LEFT JOIN horarios h ON c.Horario = h.id
+                                 LEFT JOIN carreras ca ON c.carrera = ca.id; \
+                        """
+                cursor.execute(query)
+            else:
+                # 2. Actualizamos el query de búsqueda para que use los JOIN y busque por curso o carrera
+                query = """
+                        SELECT c.id, \
+                               c.nombre                                AS nombre_curso, \
+                               CONCAT(h.hora_inicio, ', ', h.hora_fin) AS horario_completo, \
+                               ca.nombre                               AS nombre_carrera
+                        FROM cursos c
+                                 LEFT JOIN horarios h ON c.Horario = h.id
+                                 LEFT JOIN carreras ca ON c.carrera = ca.id
+                        WHERE c.nombre LIKE %s \
+                           OR ca.nombre LIKE %s; \
+                        """
+                termino = f"%{busqueda}%"
+                # Como pusimos dos '%s' (para nombre o carrera), pasamos el termino dos veces
+                cursor.execute(query, (termino, termino))
+
+            cursos = cursor.fetchall()
+
+            self.ventana.tabla_cursos.setRowCount(0)
+            self.ventana.tabla_cursos.setColumnCount(4)
+            self.ventana.tabla_cursos.setHorizontalHeaderLabels(
+                ['ID', 'Nombre', 'Horario', 'Carrera'])
+
+            self.ventana.tabla_cursos.setColumnWidth(0, 50)
+            self.ventana.tabla_cursos.setColumnWidth(1, 300)
+            self.ventana.tabla_cursos.setColumnWidth(2, 300)
+
+            self.ventana.tabla_cursos.horizontalHeader().setSectionResizeMode(3, QHeaderView.Stretch)
+
+            for fila_idx, curso in enumerate(cursos):
+                self.ventana.tabla_cursos.insertRow(fila_idx)
+
+                # 3. Emparejamos los nombres con los ALIAS exactos del SELECT
+                self.ventana.tabla_cursos.setItem(fila_idx, 0, QTableWidgetItem(str(curso['id'])))
+                self.ventana.tabla_cursos.setItem(fila_idx, 1, QTableWidgetItem(str(curso['nombre_curso'])))
+                self.ventana.tabla_cursos.setItem(fila_idx, 2, QTableWidgetItem(str(curso['horario_completo'])))
+                self.ventana.tabla_cursos.setItem(fila_idx, 3, QTableWidgetItem(str(curso['nombre_carrera'])))
+
+        except Exception as e:
+            print(f"Error al cargar la tabla de cursos: {e}")
+
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+
+    def buscar_curso(self):
+        texto_busqueda = self.ventana.input_buscarcurso.text()
+        self.cargar_cursos(texto_busqueda)
+
+    #Manejo Asignación

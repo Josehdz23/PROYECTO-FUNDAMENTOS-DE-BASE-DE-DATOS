@@ -235,7 +235,7 @@
          <string notr="true"/>
         </property>
         <property name="currentIndex">
-         <number>17</number>
+         <number>19</number>
         </property>
         <property name="iconSize">
          <size>
@@ -6049,7 +6049,7 @@ color: rgb(0, 0, 0);</string>
            <bool>true</bool>
           </property>
          </widget>
-         <widget class="QTableWidget" name="tabla_proveedores_2">
+         <widget class="QTableWidget" name="tabla_cursos">
           <property name="geometry">
            <rect>
             <x>0</x>
@@ -6351,6 +6351,202 @@ color: rgb(0, 0, 0);</string>
           </property>
           <property name="scaledContents">
            <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_100">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>30</y>
+            <width>271</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>18</pointsize>
+            <bold>false</bold>
+            <underline>false</underline>
+            <strikeout>false</strikeout>
+            <kerning>true</kerning>
+           </font>
+          </property>
+          <property name="text">
+           <string>Curso para asignar</string>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+         </widget>
+         <widget class="QComboBox" name="combo_cursos">
+          <property name="geometry">
+           <rect>
+            <x>310</x>
+            <y>30</y>
+            <width>301</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(27, 45, 48);</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="input_dpi_docente">
+          <property name="geometry">
+           <rect>
+            <x>310</x>
+            <y>90</y>
+            <width>301</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>12</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(27, 45, 48);</string>
+          </property>
+          <property name="echoMode">
+           <enum>QLineEdit::EchoMode::Normal</enum>
+          </property>
+          <property name="placeholderText">
+           <string>1234567891234</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_101">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>90</y>
+            <width>271</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>20</pointsize>
+            <bold>false</bold>
+            <underline>false</underline>
+            <strikeout>false</strikeout>
+            <kerning>true</kerning>
+           </font>
+          </property>
+          <property name="text">
+           <string>DPI del Docente </string>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="btn_guardar_asignacion">
+          <property name="geometry">
+           <rect>
+            <x>310</x>
+            <y>230</y>
+            <width>131</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>12</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(147, 197, 125);</string>
+          </property>
+          <property name="text">
+           <string>Guardar</string>
+          </property>
+          <property name="autoDefault">
+           <bool>true</bool>
+          </property>
+          <property name="default">
+           <bool>false</bool>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="btn_limpiar_asignacion">
+          <property name="geometry">
+           <rect>
+            <x>480</x>
+            <y>230</y>
+            <width>131</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>12</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(207, 226, 255);
+color: rgb(0, 0, 0);</string>
+          </property>
+          <property name="text">
+           <string>Limpiar</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="input_dpi_alumno">
+          <property name="geometry">
+           <rect>
+            <x>310</x>
+            <y>150</y>
+            <width>301</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>12</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(27, 45, 48);</string>
+          </property>
+          <property name="echoMode">
+           <enum>QLineEdit::EchoMode::Normal</enum>
+          </property>
+          <property name="placeholderText">
+           <string>1234567891234</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_102">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>150</y>
+            <width>271</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Eras Light ITC</family>
+            <pointsize>20</pointsize>
+            <bold>false</bold>
+            <underline>false</underline>
+            <strikeout>false</strikeout>
+            <kerning>true</kerning>
+           </font>
+          </property>
+          <property name="text">
+           <string>DPI del Alumno</string>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
           </property>
          </widget>
         </widget>
