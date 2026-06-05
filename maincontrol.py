@@ -1011,16 +1011,22 @@ class Principal:
 
             cursor.execute("SELECT id, nombre FROM carreras")
             self.ventana.combo_carrera.clear()
+            self.ventana.combo_carrera.addItem("Seleccione una carrera...", None)
+
             for carrera in cursor.fetchall():
                 self.ventana.combo_carrera.addItem(carrera['nombre'], carrera['id'])
 
             cursor.execute("SELECT id, nombre FROM alumnos")
             self.ventana.combo_alumnos.clear()
+            self.ventana.combo_alumnos.addItem("Seleccione un alumno...", None)
+
             for alumno in cursor.fetchall():
                 self.ventana.combo_alumnos.addItem(alumno['nombre'], alumno['id'])
 
             cursor.execute("SELECT id, nombre FROM invitados")
             self.ventana.combo_invitados.clear()
+            self.ventana.combo_invitados.addItem("Seleccione un invitado...", None)
+
             for invitado in cursor.fetchall():
                 self.ventana.combo_invitados.addItem(invitado['nombre'], invitado['id'])
 
@@ -1237,11 +1243,15 @@ class Principal:
 
             cursor.execute("SELECT id, nombre FROM carreras")
             self.ventana.combo_carrera_ins.clear()
+            self.ventana.combo_carrera_ins.addItem("Seleccione una carrera...", None)
+
             for carrera in cursor.fetchall():
                 self.ventana.combo_carrera_ins.addItem(carrera['nombre'], carrera['id'])
 
             cursor.execute("SELECT id, nombre FROM alumnos")
             self.ventana.combo_alumnos_ins.clear()
+            self.ventana.combo_alumnos_ins.addItem("Seleccione un alumno...", None)
+
             for alumno in cursor.fetchall():
                 self.ventana.combo_alumnos_ins.addItem(alumno['nombre'], alumno['id'])
 
@@ -1486,11 +1496,15 @@ class Principal:
 
             cursor.execute("SELECT id, nombre FROM carreras")
             self.ventana.combo_carrera_curso.clear()
+            self.ventana.combo_carrera_curso.addItem("Seleccione una carrera...", None)
+
             for carrera in cursor.fetchall():
                 self.ventana.combo_carrera_curso.addItem(carrera['nombre'], carrera['id'])
 
             cursor.execute("SELECT id FROM horarios")
             self.ventana.combo_horario.clear()
+            self.ventana.combo_horario.addItem("Seleccione un horario...", None)
+
             for horario in cursor.fetchall():
                 self.ventana.combo_horario.addItem(str(horario['id']), horario['id'])
 
@@ -1672,9 +1686,10 @@ class Principal:
 
         try:
             cursor = conexion.cursor(dictionary=True)
-
             cursor.execute("SELECT id, nombre FROM cursos")
             self.ventana.combo_cursos.clear()
+            self.ventana.combo_cursos.addItem("Seleccione un curso...", None)
+
             for curso in cursor.fetchall():
                 self.ventana.combo_cursos.addItem(curso['nombre'], curso['id'])
 
